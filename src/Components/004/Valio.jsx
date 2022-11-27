@@ -1,4 +1,6 @@
-function Valio() {
+import Sq from "./Sq";
+
+function Valio({padingas, spalva, bg, cross}) {
     return (
 
         <>
@@ -6,7 +8,7 @@ function Valio() {
             backgroundColor: 'white',
             padding: '10px',
         }}>Valio</h1>
-        
+        <Sq bg={bg} cross={cross} />
         </>
 
 

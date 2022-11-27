@@ -1,11 +1,13 @@
-function  Sq(bg) {
+function  Sq({bg, cross}) {
     return (
-        <div style={{
+        <div className="s" style={{
             width: '100px',
             heigth: '100px', 
-            backgroundColor: bg,
+            backgroundColor: bg
         }}>
-
+            <strong style={{
+                color: cross
+            }}>+</strong>
         </div>
     )
 }
