@@ -1,3 +1,4 @@
+import Betkoks from "./Betkoks";
 import Sq from "./Sq";
 
 function Valio({padingas, spalva, bg, cross}) {
@@ -7,7 +8,7 @@ function Valio({padingas, spalva, bg, cross}) {
         <h1 style={{
             backgroundColor: 'white',
             padding: '10px',
-        }}>Valio</h1>
+        }}>Valio<Betkoks></Betkoks></h1>
         <Sq bg={bg} cross={cross} />
         </>
 

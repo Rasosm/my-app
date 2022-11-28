@@ -1,23 +1,21 @@
-import './App.css';
-import Valio from './Components/004/Valio';
-import rand from './Functions/rand';
+import './App.scss';
 
-function App() {
+function App(a) {
+const now777 = (a) => {
+  console.log('NOW is '+ a);
+}
+
   return (
     <div className="App">
-      <header className="App-header" style={{
-         color: rand(0, 1) ? 'crimson' : 'skyblue',
-         letterSpacing: '18px'
-      }}>
-        <Valio spalva="gray" padingas="20px" bg="pink" cross="yellow"/>
-        <Valio spalva="white" padingas="30px" bg="white" cross="orange"/>
-        <div>{  rand(0, 1) }</div> 
-        <div>{  8 * 5  }</div> 
-     </header>
+      <div className="App-header">
+        <button onClick={() => now777('9:00')}>Press on 9:00 PM</button>
+        <button onClick={() => now777('10:00')}>Press on 10:00 PM</button>
+        <button onClick={now777}>Press on 11:00 PM</button>
+        <button onClick={() => console.log('NOW!!!!!')}>Press on 07:00 PM</button>
+      </div>
+      
     </div>
   );
 }
 
 export default App;
-
-
