@@ -1,19 +1,26 @@
+import Dog from './Components/006/Dog';
+import Cat from './Components/006/Cat';
 import './App.scss';
+const m = [
 
-function App(a) {
-const now777 = (a) => {
-  console.log('NOW is '+ a);
-}
+    {name:'Pilkis', color: 'pink', type: 'cat'},
+    {name:'Pūkis', color: 'crimson', type: 'cat'},
+    {name:'Šarikas', color: 'gray', type: 'dog'},
+    {name:'Rainis', color: 'skyblue', type: 'cat'},
+    {name:'Bobikas', color: 'yellow', type: 'dog'}
+
+];
+
+function App() {
 
   return (
     <div className="App">
       <div className="App-header">
-        <button onClick={() => now777('9:00')}>Press on 9:00 PM</button>
-        <button onClick={() => now777('10:00')}>Press on 10:00 PM</button>
-        <button onClick={now777}>Press on 11:00 PM</button>
-        <button onClick={() => console.log('NOW!!!!!')}>Press on 07:00 PM</button>
+        {m.map((a, i) => a.type === 'cat' ?
+            <Cat key={i} cat={a}/> :
+            <Dog key={i} dog={a}/>
+            )}
       </div>
-      
     </div>
   );
 }
