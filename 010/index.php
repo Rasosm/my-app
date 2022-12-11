@@ -212,3 +212,7 @@ $laikrodis = $valandos.":".$minutes.":".$sekundes;
 echo $laikrodis;
 echo '<br>';
 echo $prideti;
+
+$pirmas = 'antras';
+$antras = 'kitas';
+echo $kitas;
