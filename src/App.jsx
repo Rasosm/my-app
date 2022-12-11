@@ -1,38 +1,28 @@
 import { useState } from 'react';
 import './App.scss';
-import randColor from './Functions/randColor';
-import rand from './Functions/rand';
-import Sq from './Components/006/Sq';
 
 function App() {
-    const [sq, setSq] = useState([]);
+    const [color, setColor] = useState('crimson');
 
-    const add = () => {
-        setSq((s) => [...s, { id: rand(100000, 999999), color: randColor() }]);
+    const now777 = (a) => {
+        console.log('NOW is ' + a);
     };
-
+    const change = () => {
+        setColor('skyblue');
+    };
     return (
         <div className="App">
             <div className="App-header">
-                <div className="bin">
-                    {/* {sq.map((sq) => (
-                        <div
-                            className="sq"
-                            style={{
-                                backgroundColor: sq.color,
-                            }}
-                            key={sq.id}
-                        >
-                            {sq.id}
-                        </div>
-                    ))} */}
-
-                    {sq.map((square) => (
-                        <Sq key={square.id} square={square} setSq={setSq} />
-                    ))}
-                </div>
-                <button onClick={add}>ADD</button>
-                <h2>labas</h2>
+                <h1 style={{ color: color }}>Bebras</h1>
+                <button onClick={change}>Do Color</button>
+                <button onClick={() => now777('9:00')}>Press on 9:00 PM</button>
+                <button onClick={() => now777('10:00')}>
+                    Press on 10:00 PM
+                </button>
+                <button onClick={now777}>Press on 11:00 PM</button>
+                <button onClick={() => console.log('NOW!!!!!')}>
+                    Press on 07:00 PM
+                </button>
             </div>
         </div>
     );

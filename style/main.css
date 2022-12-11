@@ -1,0 +1,16 @@
+body {
+    display: inline-block;
+}
+
+.zvaigzdutes {
+    font-size: 30px;
+    display: inline-block;
+}
+.randomSkaiciai {
+    display: inline;
+}
+
+.kvadratas {
+    display: inline;
+    margin-left: 3px;
+}
