@@ -172,54 +172,46 @@ echo '<br>';
 echo '<br>6--------------------';
 echo '<br>';
 
-foreach (range(1,100) as $value1){
-$array1[$value1] = rand(100,999);
+foreach (range(1,10) as $value1){
+$array1[$value1] = rand(1,9);
 if ($array1[$value1] !== $array1[$value1]){
     $array1[$value1];
 }
 }
+echo '<br>pirmas masyvas';
  print_r($array1);
 echo '<br>';
 echo '<br>';
-foreach (range(1,100) as $value2){
-$array2[$value2] = rand(100,999);
+foreach (range(1,10) as $value2){
+$array2[$value2] = rand(1,9);
 if ($array2[$value2] !== $array2[$value2]){
     $array2[$value2];
 }
 }
+echo '<br>antras masyvas';
  print_r($array2);
 
- echo '<br>';
+echo '<br>';
 echo '<br>7--------------------';
 echo '<br>';
 
-$uniqueArray = [];
+$result = array_diff($array1, $array2);
+print_r($result); 
 
-foreach($array1 as $value3){
-    print_r($value3);
-    
+echo '<br>';
+echo '<br>8--------------------';
+echo '<br>';
+
+$result1 = array_intersect($array1, $array2);
+print_r($result1); 
+
+echo '<br>';
+echo '<br>9--------------------';
 echo '<br>';
 
 
-}
-echo '<br>';
-foreach($array2 as $value4){
-    print_r($value4);
-    
-echo '<br>';
-}
-echo '<br>';
-echo '<br>';
 
-    if ($value3 !== $value4 ){
-        print_r($value3);
-        echo '<br>';
-
-}
-    
-
-
-echo '<br>';
-// print_r($uniqueArray);
+$flipped = array_flip($array1);
+print_r($flipped); 
 
 ?>
