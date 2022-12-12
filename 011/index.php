@@ -244,6 +244,28 @@ while($smugiai <= $viniesIlgis * 5);
 
 echo $kiekReikiaSmugiu;
 
+// $visoSmugiu = 0;
+
+// foreach(range(1, 5) as $_){
+
+//     $vinisIkalta = 0;
+
+//     do { $smugis = rand(5, 20);
+
+//         echo "$smugis<br>";
+
+//          $visoSmugiu++;
+
+//          $vinisIkalta += $smugis;
+
+//         echo "Vinies progresas: $vinisIkalta <br>";}
+
+//          while ($vinisIkalta <= 85)
+
+// ;}
+
+// echo $visoSmugiu;
+
 echo "<br>10--------------";
 echo "<br>b-----------";
 
@@ -251,7 +273,13 @@ $viniesIlgis = 85;
 $smugiai = 0;
 $kiekReikiaSmugiu = 0;
 do {
-   $vienasSmugis = rand(20,30); 
+    if(rand(0,1) === 0){
+$vienasSmugis = 0;
+
+    }else{
+$vienasSmugis = rand(20,30); 
+    }
+   
     echo "<br>rand smugis";
    echo $vienasSmugis;
    echo "<br>kiek";
