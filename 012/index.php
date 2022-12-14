@@ -171,21 +171,37 @@ echo $kiekUnikaliuKombinaciju;
 echo '<br>';
 echo '<br>6--------------------';
 echo '<br>';
-
-foreach (range(1,10) as $value1){
-$array1[$value1] = rand(1,9);
-if ($array1[$value1] !== $array1[$value1]){
-    $array1[$value1];
+$array1 = [];
+while (count($array1) < 11) {
+  $randNumber = rand(1,50);
+  $isUnique = true;
+foreach ($array1 as $value1) {
+  if ($randNumber === $value1){
+    $isUnique = false;
+  }  
+}
+if($isUnique){
+  $array1[]=$randNumber;
 }
 }
 echo '<br>pirmas masyvas';
  print_r($array1);
 echo '<br>';
 echo '<br>';
-foreach (range(1,10) as $value2){
-$array2[$value2] = rand(1,9);
-if ($array2[$value2] !== $array2[$value2]){
-    $array2[$value2];
+
+echo '<br>';
+
+$array2 = [];
+while (count($array2) < 11) {
+  $randNumber = rand(1,50);
+  $isUnique = true;
+foreach ($array2 as $value1) {
+  if ($randNumber === $value1){
+    $isUnique = false;
+  }  
+}
+if($isUnique){
+  $array2[]=$randNumber;
 }
 }
 echo '<br>antras masyvas';
@@ -211,7 +227,15 @@ echo '<br>';
 
 
 
-$flipped = array_flip($array1);
-print_r($flipped); 
+$result2 = array_combine($array1, $array2);
+print_r($result2); 
 
-?>
+
+
+
+
+
+
+
+
+

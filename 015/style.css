@@ -1,0 +1,7 @@
+.sq {
+    width: 100px;
+    height: 100px;
+    border: 3px dotted grey;
+    background-color: aqua;
+    margin: 20px;
+}
