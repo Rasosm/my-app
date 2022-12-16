@@ -175,3 +175,6 @@ function mazejanti ($a, $b) {
 }
 usort($arr30, 'mazejanti');
 print_r ($arr30);
+
+echo '<br>';
+
