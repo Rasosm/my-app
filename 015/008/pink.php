@@ -1,8 +1,11 @@
-<?php
+<!-- <?php
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    header('Location: http://localhost/js-002/my-app/015/008/rose.php');
+    die;
+}
 
-
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +18,8 @@
 
 <body style="background-color: pink">
   
-
-
-
-<form action="http://localhost/js-002/my-app/015/008/pink.php" method="get">
-        <input type="text" name="color">
-        <button type="submit">GO!</button>
+<form action="http://localhost/js-002/my-app/015/008/rose.php" method="post">
+            <button type="submit">GO to rose</button>
     </form>
 
 </body>

@@ -1,7 +1,6 @@
 <?php
 
-$get = $_GET['get'] ?? ''; 
-$post = $_POST['post'] ?? ''; 
+$color = $_GET['color'] ?? 'white';
 
 ?>
 <!DOCTYPE html>

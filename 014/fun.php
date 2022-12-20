@@ -27,7 +27,7 @@ function giveMeStr2(string $str, int $num): string
   }
 };
 
-echo giveMeStr2($str, 4);
+echo giveMeStr2($str, 2);
 
 echo '<br>';
 echo '<br>3---------------';
