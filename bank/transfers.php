@@ -7,11 +7,20 @@ $id = (int) $_GET['id'];
 
 foreach($arr as $index => $li) {
     if ($li['id'] == $id) {
-        $arr[$index]['balance'] -= (int) $_POST['balance'];
+        if($li['balance'] >= (float) $_POST['balance'] ){
+        $arr[$index]['balance'] -= (float) $_POST['balance'];
+        header('Location: http://localhost/js-002/my-app/bank/deductAssets.php?successTransfer=successTransfer&id='. $id);
         break;
-    }
+            
+    }else{
+            
+        header('Location: http://localhost/js-002/my-app/bank/deductAssets.php?error=error&id='. $id);
+    die;
 }
+}
+}
+
 
 file_put_contents(__DIR__ . '/cliens', serialize($arr));
 
-header('Location: http://localhost/js-002/my-app/bank/accountList.php');
+// header('Location: http://localhost/js-002/my-app/bank/accountList.php');

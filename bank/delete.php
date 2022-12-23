@@ -8,10 +8,20 @@ $id = (int) $_GET['id'];
 foreach($clients as $index => $li) {
     print_r($li);
     if ($li['id'] == $id) {
-        unset($clients[$index]);
-        break;
+        if($li['balance'] <= 0 ){
+            unset($clients[$index]);
+            break;
+        }else{
+            
+        header('Location: http://localhost/js-002/my-app/bank/accountList.php?error=error&id='. $id);
+    die;
+}
+
+
     }
 }
+
+
 
 file_put_contents(__DIR__ . '/cliens', serialize($clients));
 
