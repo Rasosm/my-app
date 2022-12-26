@@ -4,7 +4,12 @@
 body{
     background-color: rgb(209, 215, 215);
 }
-
+.welcome{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
 img{
     width: 100px;
     // float: left;
@@ -17,6 +22,15 @@ img{
 
 .nav-item{
     float: right;
+    background-color: black;
+   
+}
+.active {
+   background-color: black;
+
+}
+.card{
+    margin: 15px;
 }
 .virsus {
     display: block;
@@ -25,6 +39,9 @@ img{
 }
 .alert{
     text-align: center;
+}
+a{
+    text-decoration: none;
 }
 // .header-container {
 //     position: absolute;

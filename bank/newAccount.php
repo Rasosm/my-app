@@ -6,22 +6,46 @@ if (!file_exists(__DIR__ .'/cliens')) {
     
 }
 
+$account_number = 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      $id = rand(1000000, 10000000);
+     
      $name = $_POST['name'];
+     $name = ucfirst($name);
      if(strlen($name) <= 3){
             header('Location: http://localhost/js-002/my-app/bank/newAccount.php?errorName');
     die;
         }
      $surname = $_POST['surname'];
+     $surname = ucfirst($surname);
         if(strlen($surname) <= 3){
             header('Location: http://localhost/js-002/my-app/bank/newAccount.php?errorSurname');
     die;
         }
 
-     $account_number = 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9);
-     $personal_id = $_POST['personal_id'];
+    
+     $personal_id = (int) $_POST['personal_id'];
+
+
+     if (preg_match('/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/', $_POST['personal_id'])) {
+
+      foreach ($arr as $li) {
+        if ($li['personal_id'] == $_POST['personal_id']) {
+            header('Location: http://localhost/js-002/my-app/bank/newAccount.php?errorPersonalIdExists');
+                die;
+            }
+        }
+$personal_id = (int) $_POST['personal_id'];
+
+     } else {
+    header('Location: http://localhost/js-002/my-app/bank/newAccount.php?errorPersonalId');
+    die;
+        }
+        
+     
+  
+
     //  $balance = $_POST['balance']?? 0;
      $balance = 0;
 
@@ -34,15 +58,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (isset($_GET['successNew'])) {
-    $successNew = 'Congradulations! You create new account';
+    $successNew = 'Sveikinu! Sėkmingai sukūrėte naują sąskaitą';
 }
 
 if (isset($_GET['errorName'])) {
-    $errorName = 'Please enter correct name';
+    $errorName = 'Prašau įrašyti teisingą vardą';
 }
 if (isset($_GET['errorSurname'])) {
-    $errorSurname = 'Please enter correct surname';
+    $errorSurname = 'Prašau įrašyti teisingą pavardę';
 }
+
+if (isset($_GET['errorPersonalIdExists'])) {
+    $errorPersonalIdExists = 'Toks asmens kodas jau egzistuoja';
+}
+
+if (isset($_GET['errorPersonalId'])) {
+    $errorPersonalId = 'Prašau įvesti teisingą asmens kodą';
+}
+
+
 ?>
 
 
@@ -55,7 +89,7 @@ if (isset($_GET['errorSurname'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./src/style.scss">
-    <title>Login</title>
+    <title>Sukurti naują sąskaitą</title>
 </head>
 
 <body>
@@ -65,20 +99,20 @@ if (isset($_GET['errorSurname'])) {
   <div class="virsus">
     <ul class="nav nav-pills">
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Account list</a>
+    <a class="nav-link" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Sąskaitų sąrašas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Add funds</a>
+    <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Pridėti lėšas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/deductAssets.php">Transfer funds</a>
+    <a class="nav-link" href="http://localhost/js-002/my-app/bank/deductAssets.php">Nuskaičiuoti lėšas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="http://localhost/js-002/my-app/bank/newAccount.php">Create new account</a>
+    <a class="nav-link active" href="http://localhost/js-002/my-app/bank/newAccount.php">Sukurti naują sąskaitą</a>
   </li>
   <li class="nav-item">
   <form class="logout" action="http://localhost/js-002/my-app/bank/login.php?logout" method="post">  
-  <button type="button logout" class="btn btn-danger">Log out</button>
+  <button type="button logout" class="btn btn-danger">Atsijungti</button>
   </form>
   </li>
 </ul>
@@ -108,31 +142,45 @@ if (isset($_GET['errorSurname'])) {
                 </div>
             </div>
             <?php endif ?>
+            <?php if(isset($errorPersonalIdExists)) : ?>
+            <div class="col-6">
+                <div class="alert alert-danger m-4" role="alert">
+                    <?= $errorPersonalIdExists ?>
+                </div>
+            </div>
+            <?php endif ?>
+            <?php if(isset($errorPersonalId)) : ?>
+            <div class="col-6">
+                <div class="alert alert-danger m-4" role="alert">
+                    <?= $errorPersonalId ?>
+                </div>
+            </div>
+            <?php endif ?>
             <div class="col-7">
                 <div class="card m-4">
                     <div class="card-header">
-                        Create new account
+                        Sukurti naują sąskaitą
                     </div>
                     <div class="card-body">
                         <form action="http://localhost/js-002/my-app/bank/newAccount.php" method="post">
                             <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="name">
+                                <label class="form-label">Vardas</label>
+                                <input type="text" name="name" class="form-control" placeholder="vardas">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Surname</label>
-                                <input type="text" name="surname" class="form-control" placeholder="surname">
-                            </div>
-                            <!-- <div class="mb-3">
-                                <label class="form-label">Account number</label>
-                                <input type="text" name="account_number" class="form-control" placeholder="account number">
-                            </div> -->
-                            <div class="mb-3">
-                                <label class="form-label">Personal ID</label>
-                                <input type="text" name="personal_id" class="form-control" placeholder="personal ID">
+                                <label class="form-label">Pavardė</label>
+                                <input type="text" name="surname" class="form-control" placeholder="pavardė">
                             </div>
                             <div class="mb-3">
-                                <button type="submit" class="btn btn-outline-info mt-4">Submit</button>
+                                <label class="form-label">Sąskaitos numeris</label>
+                                <input type="text" name="account_number" class="form-control" placeholder="account number" value="<?= $account_number ?>" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Asmens kodas</label>
+                                <input type="text" name="personal_id" class="form-control" placeholder="asmens kodas">
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-outline-info mt-4">Patvirtinti</button>
                             </div>
                         </form>
                     </div>

@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (isset($_GET['error'])) {
-    $error = 'User name or password error';
+    $error = 'Neteisingas vartotojo vardas arba slaptažodis';
 }
 
 ?>
@@ -40,35 +40,17 @@ if (isset($_GET['error'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./src/style.scss">
-    <title>Login</title>
+    <title>Prisijungti</title>
 </head>
 
 <body>
 
 <header class="container header">
-    
-  <img src="./src/TSB_logo_2013.png" alt="logo"></a>
-  <div class="virsus">
-    <ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Account list</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Add funds</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/deductAssets.php">Transfer funds</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Create new account</a>
-  </li>
-  <li class="nav-item">
-  <form class="logout" action="http://localhost/js-002/my-app/bank/login.php?logout" method="post">  
-  <button type="button logout" class="btn btn-danger">Log out</button>
-  </form>
-  </li>
-</ul>
-</div>
+    <div class="welcome">
+<img src="./src/TSB_logo_2013.png" alt="logo"></a>
+  <!-- <h3>Welcome!</h3> -->
+    </div>
+  
 </header>
     <div class="container">
         <div class="row justify-content-center">
@@ -87,13 +69,13 @@ if (isset($_GET['error'])) {
                     <div class="card-body">
                         <form action="http://localhost/js-002/my-app/bank/login.php" method="post">
                             <div class="mb-3">
-                                <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="name">
+                                <label class="form-label">Vardas</label>
+                                <input type="text" name="name" class="form-control" placeholder="vardas">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" name="psw" class="form-control" placeholder="password">
-                                <button type="submit" class="btn btn-outline-info mt-4">Login</button>
+                                <input type="password" name="psw" class="form-control" placeholder="slaptažodis">
+                                <button type="submit" class="btn btn-outline-info mt-4">Prisijungti</button>
                             </div>
                         </form>
                     </div>

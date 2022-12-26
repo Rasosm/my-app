@@ -3,6 +3,7 @@ if (!file_exists(__DIR__ .'/cliens')) {
     $arr = [];
 } else {
     $arr = unserialize(file_get_contents(__DIR__ .'/cliens'));
+    usort($arr, fn($a, $b) => $a['surname'] <=> $b['surname']);
     
 }
 
@@ -15,7 +16,7 @@ if (!file_exists(__DIR__ .'/cliens')) {
 //     die;
 // }
 if (isset($_GET['error'])) {
-    $error = 'You can not delete account if balance is more than 0 eur.';
+    $error = 'Negalima ištrinti sąskaitos jei likutis didesnis už 0 eur.';
 }
 ?>
 
@@ -27,7 +28,7 @@ if (isset($_GET['error'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./src/style.scss">
-    <title>Account List</title>
+    <title>Sąskaitų sąrašas</title>
 </head>
 <body>
   <header class="container header">
@@ -36,20 +37,20 @@ if (isset($_GET['error'])) {
     <div class="virsus">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Account list</a>
+          <a class="nav-link active" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Sąskaitų sąrašas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Add funds</a>
+          <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Pridėti lėšas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/js-002/my-app/bank/deductAssets.php">Transfer funds</a>
+          <a class="nav-link" href="http://localhost/js-002/my-app/bank/deductAssets.php">Nuskaičiuoti lėšas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Create new account</a>
+          <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Sukurti naują sąskaitą</a>
         </li>
         <li class="nav-item">
           <form class="logout" action="http://localhost/js-002/my-app/bank/login.php?logout" method="post">  
-            <button type="button logout" class="btn btn-danger">Log out</button>
+            <button type="button logout" class="btn btn-danger">Atsijungti</button>
           </form>
         </li>
       </ul>
@@ -61,12 +62,12 @@ if (isset($_GET['error'])) {
 <div class="container">
         <div class="row justify-content-center">
 <?php foreach($arr as $li) : ?>
-  <div class="card">
+  <div class="card" style="margin-bottom: 5px">
     <div class="card-header">
       <h5 class="card-title"><?=  $li['name'] ?> <?= $li['surname'] ?></h5>
     </div>
   <div class="card-body">
-    <p class="card-text"><?= $li['account_number'] ?><h5> Balance: <?= $li['balance']. ' eur'?></h5></p>
+    <p class="card-text"><?= $li['account_number'] ?><h5> Likutis: <?= $li['balance']. ' eur'?></h5></p>
     <?php if(isset($error) && $li['id'] == $_GET['id']) : ?>
             <div class="col-6">
                 <div class="alert alert-danger m-4" role="alert">
@@ -76,10 +77,10 @@ if (isset($_GET['error'])) {
             <?php endif ?>
     <div>
     <form action="http://localhost/js-002/my-app/bank/delete.php?id=<?= $li['id'] ?>" method="post">
-        <button  style="float: right; color: red;" type="submit" class="btn btn-outline-info mt-4">Delete</button>
+        <button  style="float: right; color: red;" type="submit" class="btn btn-outline-info mt-4">Ištrinti</button>
         </form>
-        <button type="submit" class="btn btn-outline-info mt-4"><a href="http://localhost/js-002/my-app/bank/addAssets.php?id=<?= $li['id'] ?>">Add assets</a></button>
-        <button type="submit" class="btn btn-outline-info mt-4"><a href="http://localhost/js-002/my-app/bank/deductAssets.php?id=<?= $li['id'] ?>">Deduct assets</a></button>
+        <button type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="http://localhost/js-002/my-app/bank/addAssets.php?id=<?= $li['id'] ?>">Pridėti lėšas</a></button>
+        <button type="submit" class="btn btn-outline-info mt-4"><a style="text-decoration: none" href="http://localhost/js-002/my-app/bank/deductAssets.php?id=<?= $li['id'] ?>">Nuskaičiuoti lėšas</a></button>
     </div>
     </div>
     </div>

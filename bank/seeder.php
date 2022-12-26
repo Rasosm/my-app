@@ -11,9 +11,9 @@ file_put_contents(__DIR__ . '/cliens', serialize($clients));
 
 
 $users = [
-    ['name' => 'Bebras', 'psw' => md5('123'), 'color' => 'crimson'],
-    ['name' => 'Briedis', 'psw' => md5('123'), 'color' => 'skyblue'],
-    ['name' => 'Paršas', 'psw' => md5('123'), 'color' => 'pink']
+    ['name' => 'Bebras', 'psw' => md5('321'), 'color' => 'crimson'],
+    ['name' => 'Rasa', 'psw' => md5('321'), 'color' => 'skyblue'],
+    ['name' => 'Paršas', 'psw' => md5('321'), 'color' => 'pink']
 ];
 
 file_put_contents(__DIR__ . '/users', serialize($users));

@@ -15,10 +15,10 @@ if (empty($_GET)) {
     die;
 }
 if (isset($_GET['error'])) {
-    $error = 'You do not have enough money';
+    $error = 'Sąskaitoje nekakanka lėšų';
 }
 if (isset($_GET['successTransfer'])) {
-    $successTransfer = 'Transfer is completed';
+    $successTransfer = 'Lėšos sėkmingai pervestos';
 }
 
 ?>
@@ -31,7 +31,7 @@ if (isset($_GET['successTransfer'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./src/style.scss">
-    <title>Account List</title>
+    <title>Nuskaičiuoti lėšas</title>
 </head>
 <body>
   <header class="container header">
@@ -40,20 +40,20 @@ if (isset($_GET['successTransfer'])) {
   <div class="virsus">
     <ul class="nav nav-pills">
   <li class="nav-item">
-    <a class="nav-link" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Account list</a>
+    <a class="nav-link" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Sąskaitų sąrašas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Add funds</a>
+    <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Pridėti lėšas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="http://localhost/js-002/my-app/bank/deductAssets.php">Transfer funds</a>
+    <a class="nav-link active" href="http://localhost/js-002/my-app/bank/deductAssets.php">Nuskaičiuoti lėšas</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Create new account</a>
+    <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Sukurti naują sąskaitą</a>
   </li>
   <li class="nav-item">
   <form class="logout" action="http://localhost/js-002/my-app/bank/login.php?logout" method="post">  
-  <button type="button logout" class="btn btn-danger">Log out</button>
+  <button type="button logout" class="btn btn-danger">Atsijungti</button>
   </form>
   </li>
 </ul>
@@ -92,7 +92,7 @@ if (isset($_GET['successTransfer'])) {
       <!-- <span class="input-group-text"><?= $li['balance'] ?></span>
       <span class="input-group-text">$</span> -->
       <input type="int" name="balance" class="form-control" placeholder="0.00">
-      <button style="margin-bottom: 10px" type="submit" class="btn btn-outline-info mt-4">Transfer</button>
+      <button style="margin-bottom: 10px" type="submit" class="btn btn-outline-info mt-4">Nuskaičiuoti</button>
       <!-- </div> -->
     </form>
     </div> 
