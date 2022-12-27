@@ -159,7 +159,7 @@ if (isset($_GET['errorPersonalId'])) {
             <?php endif ?>
             <div class="col-7">
                 <div class="card m-4">
-                    <div class="card-header">
+                    <div class="card-header" style="text-align: center">
                         Sukurti naują sąskaitą
                     </div>
                     <div class="card-body">

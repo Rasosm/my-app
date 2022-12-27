@@ -68,3 +68,14 @@ a{
     margin-bottom: 30px;
    
 }
+
+@media (max-width: 768px){
+    .col-7{
+        flex: 0 0 auto;
+            width: 90%;
+    }
+    .form-control{
+        font-size: 15px;
+    }
+
+}

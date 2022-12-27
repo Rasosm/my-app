@@ -63,8 +63,8 @@ if (isset($_GET['error'])) {
             <?php endif ?>
             <div class="col-7">
                 <div class="card m-4">
-                    <div class="card-header">
-                        Login
+                    <div class="card-header" style="text-align: center">
+                        Registracija
                     </div>
                     <div class="card-body">
                         <form action="http://localhost/js-002/my-app/bank/login.php" method="post">
@@ -73,7 +73,7 @@ if (isset($_GET['error'])) {
                                 <input type="text" name="name" class="form-control" placeholder="vardas">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Password</label>
+                                <label class="form-label">Slaptažodis</label>
                                 <input type="password" name="psw" class="form-control" placeholder="slaptažodis">
                                 <button type="submit" class="btn btn-outline-info mt-4">Prisijungti</button>
                             </div>

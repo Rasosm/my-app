@@ -1,9 +1,9 @@
 <?php
 
 $clients = [
-    ['id' => rand(1000000, 10000000),'name' => 'Bebras', 'surname' => 'Bebrienis', 'account_number' => 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '48101950039', 'balance' => '34,00 eur'],
-    ['id' => rand(1000000, 10000000),'name' => 'Briedis', 'surname' => 'Briedienis', 'account_number' => 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '48601950069', 'balance' => '204,00 eur'],
-    ['id' => rand(1000000, 10000000),'name' => 'Paršas', 'surname' => 'Parsienis', 'account_number' => 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '60901950033', 'balance' => '80,00 eur']
+    ['id' => rand(1000000, 10000000),'name' => 'Paulius', 'surname' => 'Paulenis', 'account_number' => 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '60912150033', 'balance' => '34,00'],
+    ['id' => rand(1000000, 10000000),'name' => 'Liepa', 'surname' => 'Liepaitė', 'account_number' => 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '48606230069', 'balance' => '204,00'],
+    ['id' => rand(1000000, 10000000),'name' => 'Gabrielė', 'surname' => 'Gabrelytė', 'account_number' => 'LT73'.' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '49201070069', 'balance' => '80,00']
 ];
 
 file_put_contents(__DIR__ . '/cliens', serialize($clients));
