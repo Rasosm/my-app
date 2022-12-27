@@ -55,7 +55,7 @@ if (isset($_GET['error'])) {
     <div class="container">
         <div class="row justify-content-center">
             <?php if(isset($error)) : ?>
-            <div class="col-6">
+            <div class="col-6" style="justify-content: center; display: flex">
                 <div class="alert alert-danger m-4" role="alert">
                     <?= $error ?>
                 </div>
@@ -63,7 +63,7 @@ if (isset($_GET['error'])) {
             <?php endif ?>
             <div class="col-7">
                 <div class="card m-4">
-                    <div class="card-header" style="text-align: center">
+                    <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px">
                         Registracija
                     </div>
                     <div class="card-body">
@@ -75,7 +75,9 @@ if (isset($_GET['error'])) {
                             <div class="mb-3">
                                 <label class="form-label">Slaptažodis</label>
                                 <input type="password" name="psw" class="form-control" placeholder="slaptažodis">
-                                <button type="submit" class="btn btn-outline-info mt-4">Prisijungti</button>
+                                <div style="justify-content: center; display: flex">
+                                <button type="submit" class="btn btn-outline-info mt-4" style="text-align: center; justify-content: center">Prisijungti</button>
+                        </div>
                             </div>
                         </form>
                     </div>

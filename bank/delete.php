@@ -13,7 +13,7 @@ foreach($clients as $index => $li) {
             break;
         }else{
             
-        header('Location: http://localhost/js-002/my-app/bank/accountList.php?error=error&id='. $id);
+        header('Location: http://localhost/js-002/my-app/bank/accountList.php?error0=error0&id='. $id);
     die;
 }
 
@@ -25,4 +25,4 @@ foreach($clients as $index => $li) {
 
 file_put_contents(__DIR__ . '/cliens', serialize($clients));
 
-header('Location: http://localhost/js-002/my-app/bank/accountList.php');
+header('Location: http://localhost/js-002/my-app/bank/accountList.php?successDelete');

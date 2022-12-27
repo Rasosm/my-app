@@ -14,12 +14,12 @@ if (empty($_GET)) {
     header('Location: http://localhost/js-002/my-app/bank/accountList.php');
     die;
 }
-if (isset($_GET['error'])) {
-    $error = 'Sąskaitoje nekakanka lėšų';
-}
-if (isset($_GET['successTransfer'])) {
-    $successTransfer = 'Lėšos sėkmingai pervestos';
-}
+// if (isset($_GET['error'])) {
+//     $error = 'Sąskaitoje nekakanka lėšų';
+// }
+// if (isset($_GET['successTransfer'])) {
+//     $successTransfer = 'Lėšos sėkmingai pervestos';
+// }
 
 ?>
 
@@ -42,12 +42,12 @@ if (isset($_GET['successTransfer'])) {
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Sąskaitų sąrašas</a>
   </li>
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link" href="http://localhost/js-002/my-app/bank/addAssets.php">Pridėti lėšas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" href="http://localhost/js-002/my-app/bank/deductAssets.php">Nuskaičiuoti lėšas</a>
-  </li>
+  </li> -->
   <li class="nav-item">
     <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Sukurti naują sąskaitą</a>
   </li>
@@ -67,23 +67,7 @@ if (isset($_GET['successTransfer'])) {
       </div>
       <div class="card-body">
         <p class="card-text"><?= $li['account_number'] ?><h5><?= $li['balance']. ' eur' ?></h5></p>
-       <?php if(isset($successTransfer) && $li['id'] == $_GET['id']) : ?>
-            <div class="col-4">
-                <div class="alert alert-success d-flex align-items-center" role="alert">
-                    
-                <?= $successTransfer ?>
-                </div>
-            </div>
-            <?php endif ?>
-      </div>
-     
-    <?php if(isset($error) && $li['id'] == $_GET['id']) : ?>
-            <div class="col-6">
-                <div class="alert alert-danger m-4" role="alert">
-                    <?= $error ?>
-                </div>
-            </div>
-            <?php endif ?>
+       
            
 
     <form action="http://localhost/js-002/my-app/bank/transfers.php?id=<?= $li['id'] ?>" method="post">

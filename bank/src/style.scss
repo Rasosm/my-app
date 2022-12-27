@@ -1,9 +1,11 @@
 @import 'bootstrap';
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
 
 body{
     background-color: rgb(209, 215, 215);
         color: #00012e;
+        font-family: Roboto;
 }
 .welcome{
     display: block;
@@ -30,12 +32,22 @@ img{
 .nav-link{
 color: #00012E;
 // font-weight: bold;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family: Roboto;
+color: #006394 !important;
 }
 a.nav-link.active {
-background: rgb(209, 215, 215);
+background: rgb(209, 215, 215) !important;
+color: #006394 !important;
+border-bottom: 2px solid #006394;
+padding-bottom: 0px;
+padding-left: 0px;
+padding-right: 0px;
+font-weight: bold;
 
+
+border-radius: 0px !important;
 }
+
 .card{
     margin: 15px;
 }

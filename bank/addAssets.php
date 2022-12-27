@@ -8,14 +8,12 @@ foreach (unserialize(file_get_contents(__DIR__ . '/cliens')) as $li) {
     }
 }
 
-if (empty($_GET)) {
+// if (empty($_GET)) {
     
-    header('Location: http://localhost/js-002/my-app/bank/accountList.php');
-    die;
-}
-if (isset($_GET['successAdd'])) {
-    $successAdd = 'Lėšos sėkmingai pridėtos';
-}
+//     header('Location: http://localhost/js-002/my-app/bank/accountList.php');
+//     die;
+// }
+
 ?>
 
 
@@ -39,12 +37,12 @@ if (isset($_GET['successAdd'])) {
   <li class="nav-item">
     <a class="nav-link" aria-current="page" href="http://localhost/js-002/my-app/bank/accountList.php">Sąskaitų sąrašas</a>
   </li>
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link active" href="http://localhost/js-002/my-app/bank/addAssets.php">Pridėti lėšas</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="http://localhost/js-002/my-app/bank/deductAssets.php">Nuskaičiuoti lėšas</a>
-  </li>
+  </li> -->
   <li class="nav-item">
     <a class="nav-link" href="http://localhost/js-002/my-app/bank/newAccount.php">Sukurti naują sąskaitą</a>
   </li>
@@ -65,14 +63,14 @@ if (isset($_GET['successAdd'])) {
       </div>
       <div class="card-body">
         <p class="card-text"><?= $li['account_number'] ?><h5><?= (float)$li['balance']. ' eur' ?></h5></p>
-        <?php if(isset($successAdd) && $li['id'] == $_GET['id']) : ?>
+        <!-- <?php if(isset($successAdd) && $li['id'] == $_GET['id']) : ?>
             <div class="col-4">
                 <div class="alert alert-success d-flex align-items-center" role="alert">
                     
                 <?= $successAdd ?>
                 </div>
             </div>
-            <?php endif ?>
+            <?php endif ?> -->
       </div>
      
     
