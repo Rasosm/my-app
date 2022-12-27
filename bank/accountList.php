@@ -71,6 +71,7 @@ if (isset($_GET['error'])) {
     <?php if(isset($error) && $li['id'] == $_GET['id']) : ?>
             <div class="col-6">
                 <div class="alert alert-danger m-4" role="alert">
+                  
                     <?= $error ?>
                 </div>
             </div>
