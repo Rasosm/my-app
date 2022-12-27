@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!file_exists(__DIR__ .'/cliens')) {
     $arr = [];
 } else {

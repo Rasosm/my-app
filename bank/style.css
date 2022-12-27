@@ -10783,3 +10783,56 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body {
+  background-color: rgb(209, 215, 215);
+}
+
+.welcome {
+  display: block;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+img {
+  width: 100px;
+  margin-right: 20px;
+}
+
+.logout {
+  float: right;
+  margin-left: 20px;
+}
+
+.nav-item {
+  float: right;
+}
+
+.nav-link {
+  color: black;
+}
+
+.card {
+  margin: 15px;
+}
+
+.virsus {
+  display: block;
+  float: right;
+}
+
+.alert {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
