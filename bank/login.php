@@ -64,7 +64,7 @@ if (isset($_GET['error'])) {
             <div class="col-7">
                 <div class="card m-4">
                     <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px">
-                        Registracija
+                        Prisijungimas
                     </div>
                     <div class="card-body">
                         <form action="http://localhost/js-002/my-app/bank/login.php" method="post">

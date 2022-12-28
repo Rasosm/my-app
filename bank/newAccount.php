@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      $id = rand(1000000, 10000000);
      
      $name = $_POST['name'];
-     if (preg_match('/[a-zA-Ząčęėįšųū\s]{4,}/i', $_POST['name'])) {
+     if (preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['name'])) {
     
      $name = $_POST['name'];
      $name = ucfirst($name);
@@ -23,15 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     die;
         }
 
-        if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['name'])) {
+        if (preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ]{4,}$/', $_POST['surname'])) {
      $surname = $_POST['surname'];
      $surname = ucfirst($surname);
-        }
-        if(strlen($surname) <= 3){
+        }else
+        {
             header('Location: http://localhost/js-002/my-app/bank/newAccount.php?errorSurname');
     die;
         }
-
+// if(strlen($surname) <= 3)
     
      $personal_id = (int) $_POST['personal_id'];
 
