@@ -1,0 +1,16 @@
+{
+    "name": "mijam/front",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mijam\\Front\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Rasosm",
+            "email": "rasosm@gmail.com"
+        }
+    ],
+    "require": {}
+}
