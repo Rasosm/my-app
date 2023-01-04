@@ -1,8 +1,11 @@
 {
-    "name": "mijam/front",
+    "name": "mijam/banktsb",
+    "description": "Bank TSB",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Mijam\\Front\\": "src/"
+            "Banktsb\\": "app/",
+            "App\\DB\\": "app/"
         }
     },
     "authors": [
