@@ -7,7 +7,7 @@ class Saskaita {
 
     public function index()
     {
-        // echo('dsafs');
+        
         $saskaitos = (new FR('saskaitos'))->showAll();
         $pageTitle = 'Sąskaitos | Sąrašas';
         return App::view('saskaita-list', compact('saskaitos', 'pageTitle'));
