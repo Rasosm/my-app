@@ -29,19 +29,32 @@ private static function router(array $url)
         }
 
         if ($url[0] == 'saskaitos' && $url[1] == 'save' && count($url) == 2 && $method == 'POST') {
+
             return (new Saskaita)->save();
         }
 
-        if ($url[0] == 'saskaitos' && $url[1] == 'edit' && count($url) == 3 && $method == 'GET') {
-            return (new Saskaita)->edit($url[2]);
-        }
+        // if ($url[0] == 'saskaitos' && $url[1] == 'edit' && count($url) == 3 && $method == 'GET') {
+        //     return (new Saskaita)->edit($url[2]);
+        // }
 
-        if ($url[0] == 'saskaitos' && $url[1] == 'update' && count($url) == 3 && $method == 'POST') {
-            return (new Saskaita)->update($url[2]);
-        }
+        // if ($url[0] == 'saskaitos' && $url[1] == 'update' && count($url) == 3 && $method == 'POST') {
+        //     return (new Saskaita)->update($url[2]);
+        // }
 
         if ($url[0] == 'saskaitos' && $url[1] == 'delete' && count($url) == 3 && $method == 'POST') {
             return (new Saskaita)->delete($url[2]);
+        }
+        if ($url[0] == 'saskaitos' && $url[1] == 'add' && count($url) == 3 && $method == 'GET') {
+            return (new Saskaita)->add($url[2]);
+        }
+         if ($url[0] == 'saskaitos' && $url[1] == 'add' && count($url) == 3 && $method == 'POST') {
+            return (new Saskaita)->update($url[2]);
+        }
+        if ($url[0] == 'saskaitos' && $url[1] == 'transfer' && count($url) == 3 && $method == 'GET') {
+            return (new Saskaita)->transfer($url[2]);
+        }
+         if ($url[0] == 'saskaitos' && $url[1] == 'transfer' && count($url) == 3 && $method == 'POST') {
+            return (new Saskaita)->update1($url[2]);
         }
 
         // if ($url[0] == 'users' && $url[1] == 'all' && count($url) == 2 && $method == 'GET') {

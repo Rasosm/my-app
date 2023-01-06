@@ -6,9 +6,9 @@ $saskaitos = [
     ['id' => rand(1000000, 10000000),'name' => 'Gabrielė', 'surname' => 'Gabrelytė', 'account_number' => 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9), 'personal_id' => '49201070069', 'balance' => '80,00']
 ];
 
-file_put_contents(__DIR__ . '/saskaitos', serialize($saskaitos));
+file_put_contents(__DIR__ . '/app/DB/saskaitos', serialize($saskaitos));
 
-
+// my-app\banktsb\app\DB\saskaitos
 
 $users = [
     ['name' => 'Bebras', 'psw' => md5('321'), 'color' => 'crimson'],

@@ -27,13 +27,14 @@ class FileReader implements DataBase {
 
     private function getId() : int
     {
+        $id = rand(1000000,10000000);
         if (!file_exists(__DIR__ . '/' . $this->name .'_id')) {
-            file_put_contents(__DIR__ . '/' . $this->name .'_id', serialize(1));
-            return 1;
+            file_put_contents(__DIR__ . '/' . $this->name .'_id', serialize($id));
+            return $id;
         } 
         else {
-            $id = unserialize(file_get_contents(__DIR__ . '/' . $this->name .'_id'));
-            $id++;
+            // $id = unserialize(file_get_contents(__DIR__ . '/' . $this->name .'_id'));
+            // $id++;
             file_put_contents(__DIR__ . '/' . $this->name .'_id', serialize($id));
             return $id;
         }
@@ -49,6 +50,27 @@ class FileReader implements DataBase {
     {
         $userData['id'] = $userId;
         $this->data = array_map(fn($data) => $userId == $data['id'] ? $userData : $data, $this->data);
+    }
+    public function add(int $userId, array $userData) : void
+    {
+        $userData['id'] = $userId;
+        foreach($this->data as $key => $saskaita) {
+    if ($saskaita['id'] == $userId) {
+        (float) $this->data[$key]['balance'] += (float)$userData['balance'];
+        
+    }
+    }
+    }
+
+    public function transfer(int $userId, array $userData) : void
+    {
+        $userData['id'] = $userId;
+        foreach($this->data as $key => $saskaita) {
+    if ($saskaita['id'] == $userId) {
+        (float) $this->data[$key]['balance'] -= (float)$userData['balance'];
+        
+    }
+    }
     }
 
     public function delete(int $userId) : void
