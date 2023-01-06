@@ -18,10 +18,26 @@ $account_number = 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.r
 <div class="container">
     <div class="row justify-content-center">
         <?php if(isset($errorName) ) : ?>
+            <div class="col-6">
+                <div class="alert alert-danger m-4" role="alert">
+                     <?= $errorName ?>
+                </div>
+        </div>
+                <?php endif ?>
+                <?php if(isset($errorId) ) : ?>
                 <div class="col-6">
                     <div class="alert alert-danger m-4" role="alert">
                   
-                    <?= $errorName ?>
+                    <?= $errorId ?>
+                </div>
+            </div>
+                <?php endif ?>
+
+                <?php if(isset($errorUniqueID) ) : ?>
+                <div class="col-6">
+                    <div class="alert alert-danger m-4" role="alert">
+                  
+                    <?= $errorUniqueID ?>
                 </div>
             </div>
                 <?php endif ?>

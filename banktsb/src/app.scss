@@ -55,7 +55,13 @@ a.nav-link.active {
 .card {
     margin: 15px;
 }
-
+.card-title{
+    margin-bottom: 8px;
+    padding: 8px;
+}
+h5{
+    font-size: 18px;
+}
 .virsus {
     display: block;
     float: right;
@@ -90,6 +96,10 @@ a {
     margin-top: 20px;
     margin-bottom: 30px;
 
+}
+
+h5{
+    font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {

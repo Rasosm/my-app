@@ -46,6 +46,19 @@ class FileReader implements DataBase {
         $this->data[] = $userData;
     }
 
+    public function unique(int $personal_id) : bool
+    {
+        foreach ($this->data as $data) {
+            if($personal_id == $data['personal_id']){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    
+
     public function update(int $userId, array $userData) : void
     {
         $userData['id'] = $userId;
@@ -73,10 +86,24 @@ class FileReader implements DataBase {
     }
     }
 
+    // public function delete(int $userId) : void
+    // {
+    //     $userData['id'] = $userId;
+    //     foreach($this->data as $key => $saskaita) {
+    //         if ($saskaita['id'] == $userId) {
+    //             if($saskaita['balance'] == 0 ){
+    //         unset($saskaitos[$key]);
+    //             }  
+        
+    // }
+    // }
+    // }
+
     public function delete(int $userId) : void
     {
         $this->data = array_filter($this->data, fn($data) => $userId != $data['id']);
     }
+
 
     public function show(int $userId) : array
     {
