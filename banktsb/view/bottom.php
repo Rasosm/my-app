@@ -1,24 +1,9 @@
 <footer class="footer">
         <div class="container">
             <div class="row footer-row-1">
-                <div class="col-9 col-lg-4 col-xl-3">
-                    <a href="./index.html" class="header-logo">
-                        <img src="/TSB_logo_2013.png" alt="logo"" />
-                    </a>
-                    <p class="footer-des">
-                        Sedut perspiciatis unde omnis iste natus error
-                        sitlutem acc usantium doloremque denounce with illo
-                        inventore veritatis
-                    </p>
-                    <div class="footer-socials">
-                        <a href="#" class="socials fa-brands fa-facebook-f"></a>
-                        <a href="#" class="socials fa-brands fa-twitter"></a>
-                        <a href="#" class="socials fa-brands fa-pinterest-p"></a>
-                        <a href="#" class="socials fa-brands fa-instagram"></a>
-                    </div>
-                </div>
+                
                 <div class="col-12 col-lg-4 col-xl-3 services-padding">
-                    <h4 class="footer-title">IT Services</h4>
+                    <h5 class="footer-title">IT departamentas</h5>
                     <a href="#" class="footer-link">Software Development</a>
                     <a href="#" class="footer-link">Web Development</a>
                     <a href="#" class="footer-link">Analytic Solutions</a>
@@ -27,7 +12,7 @@
                 </div>
 
                 <div class="col-12 col-lg-4 col-xl-3">
-                    <h4 class="footer-title">Contact Info</h4>
+                    <h5 class="footer-title">Finansų departamentas</h5>
                     <div class="footer-contact-box">
                         <i class="fa-solid fa-location-dot footer-contact-icon"></i>
                         <p class="footer-link inactive">
@@ -44,12 +29,12 @@
                     <div class="footer-contact-box">
                         <i class="fa-solid fa-clock footer-contact-icon"></i>
                         <p class="footer-link inactive">
-                            Opening Hours: 10:00 - 18:00
+                            Darbo laikas: 10:00 - 18:00
                         </p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4 col-xl-3">
-                    <h4 class="footer-title">Contact Info</h4>
+                    <h5 class="footer-title">Administracija</h5>
                     <div class="footer-contact-box">
                         <i class="fa-solid fa-location-dot footer-contact-icon"></i>
                         <p class="footer-link inactive">
@@ -66,7 +51,29 @@
                     <div class="footer-contact-box">
                         <i class="fa-solid fa-clock footer-contact-icon"></i>
                         <p class="footer-link inactive">
-                            Opening Hours: 10:00 - 18:00
+                            Darbo laikas: 10:00 - 18:00
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-3">
+                    <h5 class="footer-title">Psichologinė pagalba</h5>
+                    <div class="footer-contact-box">
+                        <i class="fa-solid fa-location-dot footer-contact-icon"></i>
+                        <p class="footer-link inactive">
+                            374 FA Tower, William S Blvd 2721, IL, USA
+                        </p>
+                    </div>
+                    <div class="footer-contact-box">
+                        <i class="fa-solid fa-phone footer-contact-icon"></i><a href="tel:+88015569569" class="footer-link">(+880)155-69569</a>
+                    </div>
+                    <div class="footer-contact-box">
+                        <i class="fa-solid fa-envelope footer-contact-icon"></i>
+                        <a href="mailto:support@rstheme.com" class="footer-link">support@rstheme.com</a>
+                    </div>
+                    <div class="footer-contact-box">
+                        <i class="fa-solid fa-clock footer-contact-icon"></i>
+                        <p class="footer-link inactive">
+                            Darbo laikas: 10:00 - 18:00
                         </p>
                     </div>
                 </div>

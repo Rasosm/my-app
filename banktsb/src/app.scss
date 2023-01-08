@@ -14,9 +14,12 @@ body {
     text-align: center;
     align-items: center;
 }
+p{
+    margin-bottom: 0;
+}
 
 img {
-    width: 100px;
+    width: 120px;
     // float: left;
     margin-right: 20px;
     margin-bottom: 10px;
@@ -36,13 +39,14 @@ img {
     color: #00012E;
     // font-weight: bold;
     font-family: Roboto;
-    color: #006394 !important;
+    color: #025984 !important;
+    font-size: 18px;
 }
 
 a.nav-link.active {
     background: rgb(209, 215, 215) !important;
-    color: #006394 !important;
-    border-bottom: 2px solid #006394;
+    color: #025984 !important;
+    border-bottom: 2px solid #025984;
     padding-bottom: 0px;
     padding-left: 0px;
     padding-right: 0px;
@@ -54,10 +58,14 @@ a.nav-link.active {
 
 .card {
     margin: 15px;
+    padding: 0;
 }
 .card-title{
-    margin-bottom: 8px;
+    margin-bottom: 0px;
     padding: 8px;
+}
+.card-body{
+    padding: 16px 20px;
 }
 h5{
     font-size: 18px;
@@ -71,9 +79,14 @@ h5{
 .alert {
     text-align: center;
 }
-
+header{
+    a{
+        font-size: 18px;
+    }
+}
 a {
     text-decoration: none;
+    
 }
 
 // .header-container {
@@ -94,7 +107,7 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
 }
 
@@ -102,14 +115,36 @@ h5{
     font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-    .col-7 {
-        flex: 0 0 auto;
-        width: 90%;
+footer{
+    margin-top: 40px;
+    font-style: italic;
+    color: #025984;
+    .footer-title{
+        font-style: normal;
+        font-size: 16px;
     }
-
-    .form-control {
-        font-size: 15px;
+    p{
+        font-size: 13px;
     }
+    a{
+        font-size: 13px;
+        // color: black;
+        color: #025984;
 
+    }
 }
+.footer-title {
+    font-style: normal;
+}
+
+// @media (max-width: 768px) {
+//     .col-7 {
+//         flex: 0 0 auto;
+//         width: 90%;
+//     }
+
+//     .form-control {
+//         font-size: 15px;
+//     }
+
+// }

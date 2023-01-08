@@ -16,6 +16,15 @@
                 </div>
             </div>
             <?php endif ?>
+
+            <?php if(isset($successDelete)) : ?>
+            <div class="col-6" style="justify-content: center; display: flex">
+                <div class="alert alert-success m-4 d-flex align-items-center" style="text-align: center" role="alert">
+                    
+                <?= $successDelete ?>
+                </div>
+            </div>
+            <?php endif ?>
 <?php foreach($saskaitos as $saskaita) : ?>
   <div class="card" style="margin-bottom: 5px">
     <div class="card-header" style="display: inherit">

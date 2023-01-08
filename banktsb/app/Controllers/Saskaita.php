@@ -24,7 +24,7 @@ class Saskaita {
          $_POST['balance']= (float)0;
         if (!preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['name']) || !preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['surname'])) {
             
-            $errorName ='Prašau įvesti teisingą vardą arba pavardę';
+            $errorName ='Prašau įvesti teisingą vardą ir pavardę';
             return App::view('saskaita-create', compact('errorName'));  
             }
         if (!preg_match('/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/', $_POST['personal_id'])){
@@ -36,12 +36,17 @@ class Saskaita {
 
         if ((new FR('saskaitos'))->unique($_POST['personal_id'])) 
         {
-            $errorUniqueID ='Klientas su šiuo asmens kodu jau užsiregistravęs!';
+            $errorUniqueID ='Klientas su šiuo asmens kodu jau užregistruotas!';
             return App::view('saskaita-create', compact('errorUniqueID'));
         } else {
             (new FR('saskaitos'))->create($_POST);
+            // print_r($_POST);
+            //  print_r($_POST['surname']);
+
+            // $surname = ucfirst($_POST['surname']);
+            // $surname = ucfirst($surname);
             $successNew ='Sveikinu! Sėkmingai sukūrėte naują sąskaitą';
-            return App::redirect('saskaitos', compact('successNew')); 
+            return App::view('saskaita-create', compact('successNew',)); 
 
         }
         
@@ -149,7 +154,8 @@ class Saskaita {
     public function update($id)
     {
         (new FR('saskaitos'))->add($id, $_POST);
-        return App::redirect('saskaitos/add/'. $id);
+        $successAdd = 'Lėšos sėkmingai pridėtos į sąskaitą';
+        return App::redirect('saskaitos/add/'. $id, compact('successAdd', 'saskaita'));
         
     }
     public function update1($id)
@@ -161,23 +167,6 @@ class Saskaita {
         return App::redirect('saskaitos/transfer/'. $id);
     }
 
-    // public function delete($id)
-    // {
-       
-    //     foreach($saskaitos as $index => $saskaita) {
-    
-    // if ($saskaita['id'] == $id) {
-    //     if($saskaita['balance'] > 0 ){
-    //     $error0 = 'Negalima ištrinti sąskaitos jei likutis didesnis už 0 eur.';
-    //     break;
-    //     }else{
-    //     (new FR('saskaitos'))->delete($id);
-    //     return App::redirect('saskaitos');
-    //         }
-        
-    //     }
-    // }
-    // }
 
     public function delete($id)
     {
@@ -194,7 +183,8 @@ class Saskaita {
         }
         
         (new FR('saskaitos'))->delete($id);
-        return App::redirect('saskaitos');
+        $successDelete ='Sąskaita sėkmingai ištrinta';
+        return App::view('saskaita-list', compact('successDelete', 'saskaitos'));
     }
         
 
@@ -206,13 +196,18 @@ class Saskaita {
     {
         $pageTitle = 'Sąskaita | Pridėti';
         $saskaita = (new FR('saskaitos'))->show($id);
+        $successAdd = 'Lėšos sėkmingai pridėtos į sąskaitą';
         return App::view('saskaita-add', compact('pageTitle', 'saskaita'));
     }
     public function transfer($id)
     {
         $pageTitle = 'Sąskaita | Nuskaičiuoti';
         $saskaita = (new FR('saskaitos'))->show($id);
-        return App::view('saskaita-transfer', compact('pageTitle', 'saskaita'));
+        
+               
+        $error = 'Sąskaitoje nekakanka lėšų';
+        $successTransfer = 'Lėšos sėkmingai pervestos';
+        return App::view('saskaita-transfer', compact('pageTitle', 'successTransfer', 'saskaita'));
     }
 
 

@@ -17,6 +17,15 @@ $account_number = 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.r
 
 <div class="container">
     <div class="row justify-content-center">
+         <?php if(isset($successNew)) : ?>
+            <div class="col-6" style="justify-content: center; display: flex">
+                <div class="alert alert-success m-4 d-flex align-items-center" style="text-align: center" role="alert">
+                    
+                <?= $successNew ?>
+                </div>
+            </div>
+            <?php endif ?>
+    
         <?php if(isset($errorName) ) : ?>
             <div class="col-6">
                 <div class="alert alert-danger m-4" role="alert">
@@ -51,7 +60,9 @@ $account_number = 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.r
             </div>
                 <?php endif ?>
 
-        <div class="col-7">
+                
+
+        <div class="col-7" style="margin-top: 0">
             <div class="card m-4">
                 
                 

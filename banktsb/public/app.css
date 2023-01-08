@@ -10797,8 +10797,12 @@ body {
   align-items: center;
 }
 
+p {
+  margin-bottom: 0;
+}
+
 img {
-  width: 100px;
+  width: 120px;
   margin-right: 20px;
   margin-bottom: 10px;
 }
@@ -10815,13 +10819,14 @@ img {
 .nav-link {
   color: #00012E;
   font-family: Roboto;
-  color: #006394 !important;
+  color: #025984 !important;
+  font-size: 18px;
 }
 
 a.nav-link.active {
   background: rgb(209, 215, 215) !important;
-  color: #006394 !important;
-  border-bottom: 2px solid #006394;
+  color: #025984 !important;
+  border-bottom: 2px solid #025984;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
@@ -10831,11 +10836,16 @@ a.nav-link.active {
 
 .card {
   margin: 15px;
+  padding: 0;
 }
 
 .card-title {
-  margin-bottom: 8px;
+  margin-bottom: 0px;
   padding: 8px;
+}
+
+.card-body {
+  padding: 16px 20px;
 }
 
 h5, .h5 {
@@ -10851,6 +10861,10 @@ h5, .h5 {
   text-align: center;
 }
 
+header a {
+  font-size: 18px;
+}
+
 a {
   text-decoration: none;
 }
@@ -10860,19 +10874,30 @@ a {
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 h5, .h5 {
   font-size: 1.1rem;
 }
 
-@media (max-width: 768px) {
-  .col-7 {
-    flex: 0 0 auto;
-    width: 90%;
-  }
-  .form-control {
-    font-size: 15px;
-  }
+footer {
+  margin-top: 40px;
+  font-style: italic;
+  color: #025984;
+}
+footer .footer-title {
+  font-style: normal;
+  font-size: 16px;
+}
+footer p {
+  font-size: 13px;
+}
+footer a {
+  font-size: 13px;
+  color: #025984;
+}
+
+.footer-title {
+  font-style: normal;
 }

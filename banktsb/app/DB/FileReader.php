@@ -79,10 +79,14 @@ class FileReader implements DataBase {
     {
         $userData['id'] = $userId;
         foreach($this->data as $key => $saskaita) {
-    if ($saskaita['id'] == $userId) {
+    if ($saskaita['id'] == $userId && $saskaita['balance'] >= $_POST['balance'] ) {
         (float) $this->data[$key]['balance'] -= (float)$userData['balance'];
         
     }
+    
+    if ($saskaita['id'] == $userId && $saskaita['balance'] < $_POST['balance'] ) {
+        $error = 'Sąskaitoje nekakanka lėšų';
+    }    
     }
     }
 

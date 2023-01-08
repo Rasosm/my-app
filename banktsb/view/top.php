@@ -7,6 +7,7 @@
      <title><?= $pageTitle ?? 'Untitled Page' ?></title>
     <script src="<?= URL . 'app.js' ?>"></script>
     <link rel="stylesheet" href="<?= URL . 'app.css' ?>">
+    <link rel="stylesheet" href="font-awesome.min.css">
 </head>
 <body>
     <header class="container header">
