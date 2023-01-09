@@ -9,6 +9,7 @@ class App {
 
     public static function start()
     {
+        session_start();
         $url = explode('/', $_SERVER['REQUEST_URI']);
         array_shift($url);
         return self::router($url);
@@ -40,6 +41,12 @@ private static function router(array $url)
         // if ($url[0] == 'saskaitos' && $url[1] == 'update' && count($url) == 3 && $method == 'POST') {
         //     return (new Saskaita)->update($url[2]);
         // }
+        if ($url[0] == 'login' && count($url) == 1 && $method == 'GET') {
+            return (new Saskaita)->login();
+        }
+        if ($url[0] == 'login' && count($url) == 1 && $method == 'POST') {
+            return (new Saskaita)->check($url[1]);
+        }
 
         if ($url[0] == 'saskaitos' && $url[1] == 'delete' && count($url) == 3 && $method == 'POST') {
             return (new Saskaita)->delete($url[2]);
@@ -56,42 +63,6 @@ private static function router(array $url)
          if ($url[0] == 'saskaitos' && $url[1] == 'transfer' && count($url) == 3 && $method == 'POST') {
             return (new Saskaita)->update1($url[2]);
         }
-
-        // if ($url[0] == 'users' && $url[1] == 'all' && count($url) == 2 && $method == 'GET') {
-        //     return (new Api)->allUsers();
-        // }
-
-        // if ($url[0] == 'users' && $url[1] == 'js' && count($url) == 2 && $method == 'GET') {
-        //     return (new Api)->jsUsers();
-        // }
-
-        // GRYBAI API
-
-        // if ($url[0] == 'api' && $url[1] == 'grybai' && count($url) == 2 && $method == 'GET') {
-        //     return (new GrybasApi)->index();
-        // }
-
-        // if ($url[0] == 'api' && $url[1] == 'grybai' && $url[2] == 'save' && count($url) == 3 && $method == 'POST') {
-        //     return (new GrybasApi)->save();
-        // }
-
-        // if ($url[0] == 'grybai' && $url[1] == 'edit' && count($url) == 3 && $method == 'GET') {
-        //     return (new Grybas)->edit($url[2]);
-        // }
-
-        // if ($url[0] == 'grybai' && $url[1] == 'update' && count($url) == 3 && $method == 'POST') {
-        //     return (new Grybas)->update($url[2]);
-        // }
-
-        // if ($url[0] == 'grybai' && $url[1] == 'delete' && count($url) == 3 && $method == 'POST') {
-        //     return (new Grybas)->delete($url[2]);
-        // }
-
-
-
-
-
-
 
         return '404 NOT FOUND';
     }

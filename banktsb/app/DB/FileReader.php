@@ -2,6 +2,7 @@
 namespace Banktsb\DB;
 
 use App\DB\DataBase;
+use Banktsb\Message as M;
 
 class FileReader implements DataBase {
 
@@ -72,20 +73,34 @@ class FileReader implements DataBase {
         (float) $this->data[$key]['balance'] += (float)$userData['balance'];
         
     }
+    if(!is_numeric($_POST['balance']) )
+    {
+        M::add('Netinkamai įvesti duomenys', 'alert-danger');
     }
     }
-
+    }
     public function transfer(int $userId, array $userData) : void
     {
         $userData['id'] = $userId;
         foreach($this->data as $key => $saskaita) {
-    if ($saskaita['id'] == $userId && $saskaita['balance'] >= $_POST['balance'] ) {
+    if ($saskaita['id'] == $userId && $saskaita['balance'] >= $_POST['balance'] && $_POST['balance'] > 0) {
         (float) $this->data[$key]['balance'] -= (float)$userData['balance'];
+             M::add('Lėšos sėkmingai pervestos', 'alert-success');
         
+    }
+
+    if(!is_numeric($_POST['balance']) && $_POST['balance'] < 0 )
+    {
+        M::add('Netinkamai įvesti duomenys', 'alert-danger');
+    }
+
+    if($_POST['balance'] < 0 )
+    {
+        M::add('Netinkamai įvesti duomenys', 'alert-danger');
     }
     
     if ($saskaita['id'] == $userId && $saskaita['balance'] < $_POST['balance'] ) {
-        $error = 'Sąskaitoje nekakanka lėšų';
+      M::add('Nepakanka lėšų', 'alert-danger');
     }    
     }
     }

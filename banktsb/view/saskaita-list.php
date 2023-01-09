@@ -1,5 +1,15 @@
 <div class="container">
     <div class="row justify-content-center">
+
+    <?php if(isset($message)) : ?>
+            <div class="col-6" style="justify-content: center; display: flex">
+                <div class="alert <?= $message['type'] ?> m-4 d-flex align-items-center" style="text-align: center" role="alert">
+                    
+                <?= $message['text'] ?>
+                </div>
+            </div>
+            <?php endif ?>
+
            <?php if(isset($successNew)) : ?>
             <div class="col-4" style="justify-content: center; display: flex">
                 <div class="alert alert-success d-flex align-items-center" style="text-align: center" role="alert">

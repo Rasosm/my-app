@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 // if (!file_exists(__DIR__ .'/cliens')) {
 //     $arr = [];
 // } else {
@@ -17,11 +17,19 @@ $account_number = 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.r
 
 <div class="container">
     <div class="row justify-content-center">
-         <?php if(isset($successNew)) : ?>
+<!-- <?php if(isset($message)) :?>
+
+    <h2 class="<?= $message['type'] ?>"><?= $message['text'] ?></h2>
+
+    <?php endif ?> -->
+
+
+
+         <?php if(isset($message)) : ?>
             <div class="col-6" style="justify-content: center; display: flex">
-                <div class="alert alert-success m-4 d-flex align-items-center" style="text-align: center" role="alert">
+                <div class="alert <?= $message['type'] ?> m-4 d-flex align-items-center" style="text-align: center" role="alert">
                     
-                <?= $successNew ?>
+                <?= $message['text'] ?>
                 </div>
             </div>
             <?php endif ?>

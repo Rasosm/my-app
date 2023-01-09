@@ -1,21 +1,14 @@
 <div class="container">
   <div class="row justify-content-center">
-<?php if(isset($successTransfer)) : ?>
-            <div class="col-6" style="justify-content: center; display: flex">
-                <div class="alert alert-success m-4 d-flex align-items-center" style="text-align: center" role="alert">
-                    
-                <?= $successTransfer ?>
-                </div>
-            </div>
-            <?php endif ?>
 
-            <?php if(isset($error) ) : ?>
-            <div class="col-6">
-                <div class="alert alert-danger m-4" role="alert">
-                     <?= $error ?>
-                </div>
+<?php if(isset($message)) : ?>
+    <div class="col-6" style="justify-content: center; display: flex">
+        <div class="alert <?= $message['type'] ?> m-4 d-flex align-items-center" style="text-align: center" role="alert">
+          <?= $message['text'] ?>
         </div>
-                <?php endif ?>
+    </div>
+  <?php endif ?>
+  
     <div class="card">
       <div class="card-header">
         <h5 style="font-size: 18px; font-weight: bold" class="card-title"><?=  $saskaita['name'] ?> <?= $saskaita['surname'] ?></h5>
