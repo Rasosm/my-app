@@ -1,12 +1,21 @@
 <div class="container">
         <div class="row justify-content-center">
-            <?php if(isset($errorLogin)) : ?>
+            <?php if(isset($message)) : ?>
             <div class="col-6" style="justify-content: center; display: flex">
-                <div class="alert alert-danger m-4" role="alert">
-                    <?= $errorLogin ?>
+                <div class="alert <?= $message['type'] ?> m-4 d-flex align-items-center" style="text-align: center" role="alert">
+                    
+                <?= $message['text'] ?>
                 </div>
             </div>
             <?php endif ?>
+
+            <?php if(isset($message)) : ?>
+    <div class="col-6" style="justify-content: center; display: flex">
+        <div class="alert <?= $message['type'] ?> m-4 d-flex align-items-center" style="text-align: center" role="alert">
+          <?= $message['text'] ?>
+        </div>
+    </div>
+  <?php endif ?>
             <div class="col-7">
                 <div class="card m-4">
                     <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px">

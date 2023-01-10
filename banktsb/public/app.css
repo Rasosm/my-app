@@ -10902,13 +10902,10 @@ footer a {
   font-style: normal;
 }
 
-h2, .h2 {
-  margin: 20px;
-  padding: 10px;
-}
-h2.ok, .ok.h2 {
-  background-color: aquamarine;
-}
-h2.error, .error.h2 {
-  background-color: crimson;
+@media (min-width: 576px) {
+  .container-md,
+  .container-sm,
+  .container {
+    min-width: 540px;
+  }
 }

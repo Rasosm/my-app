@@ -138,6 +138,10 @@ footer{
 }
 
 // @media (max-width: 768px) {
+//     .conteiner{
+
+// width: 90%;
+//     }
 //     .col-7 {
 //         flex: 0 0 auto;
 //         width: 90%;
@@ -148,16 +152,17 @@ footer{
 //     }
 
 // }
+// @media (min-width: 576px) {
+// .container-sm,
+// .container {
+//     min-width: 540px; 
+// }
+// }
 
-h2 {
-    margin: 20px;
-    padding: 10px;
-
-    &.ok {
-        background-color: aquamarine;
-    }
-
-    &.error {
-        background-color: crimson;
-    }
+@media (min-width: 576px) {
+.container-md,
+.container-sm,
+.container {
+    min-width: 540px;
+}
 }

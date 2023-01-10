@@ -25,12 +25,19 @@ class Saskaita {
     public function save()
     {
          $_POST['balance']= (float)0;
-        if (!preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['name']) || !preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['surname'])) {
+        if (!preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['name'])) {
             
-            M::add('Prašau įvesti teisingą vardą ir pavardę', 'alert-danger');
+            M::add('Prašau įvesti teisingą vardą', 'alert-danger');
             $message = M::get();
             return App::view('saskaita-create', compact('message'));  
             }
+        if (!preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['surname'])) {
+            
+            M::add('Prašau įvesti teisingą pavardę', 'alert-danger');
+            $message = M::get();
+            return App::view('saskaita-create', compact('message'));  
+            }    
+
         if (!preg_match('/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/', $_POST['personal_id'])){
             
             M::add('Prašau įvesti teisingą asmens kodą', 'alert-danger');
@@ -62,12 +69,20 @@ class Saskaita {
         $pageTitle = 'Registracija';
         return App::view('login', compact('pageTitle'));
     }
+    public function check()
+    {
+        $pageTitle = 'Registracija';
+        (new FR('users'))->check();
+        // $message = M::get();
+        // M::add('Neteisingas vartotojo vardas arba slaptažodis', 'alert-danger');
+        // return App::redirect('saskaitos');
+    }
     
     public function update($id)
     {
         (new FR('saskaitos'))->add($id, $_POST);
-        $message = M::get();
-        M::add('Lėšos sėkmingai pridėtos į sąskaitą', 'alert-success');
+        // $message = M::get();
+        // M::add('Lėšos sėkmingai pridėtos į sąskaitą', 'alert-success');
         return App::redirect('saskaitos/add/'. $id);
         
     }

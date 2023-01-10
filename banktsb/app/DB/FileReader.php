@@ -1,6 +1,7 @@
 <?php
 namespace Banktsb\DB;
 
+use Banktsb\App;
 use App\DB\DataBase;
 use Banktsb\Message as M;
 
@@ -17,6 +18,7 @@ class FileReader implements DataBase {
         } 
         else {
             $this->data = unserialize(file_get_contents(__DIR__ . '/' . $this->name));
+            // usort($this->data, fn($a, $b) => $a['surname'] <=> $b['surname']);
         }
     }
 
@@ -69,11 +71,16 @@ class FileReader implements DataBase {
     {
         $userData['id'] = $userId;
         foreach($this->data as $key => $saskaita) {
-    if ($saskaita['id'] == $userId) {
+    if ($saskaita['id'] == $userId && $_POST['balance'] > 0) {
         (float) $this->data[$key]['balance'] += (float)$userData['balance'];
-        
+        M::add('Lėšos sėkmingai pridėtos į sąskaitą', 'alert-success');
     }
     if(!is_numeric($_POST['balance']) )
+    {
+        M::add('Netinkamai įvesti duomenys', 'alert-danger');
+    }
+
+    if($_POST['balance'] < 0 )
     {
         M::add('Netinkamai įvesti duomenys', 'alert-danger');
     }
@@ -105,6 +112,24 @@ class FileReader implements DataBase {
     }
     }
 
+
+    public function check()
+    {
+        $users = unserialize(file_get_contents(__DIR__ . '/users'));
+ 
+        // print_r($_POST);
+    foreach($users as $user) {
+        if ($user['name'] == $_POST['name']) {
+             if ($user['psw'] == md5($_POST['psw'])) {
+                 $_SESSION['user'] = $user;
+            return App::redirect('saskaitos');
+     }
+    }
+ }
+ M::add('Neteisingas vartotojo vardas arba slaptažodis', 'alert-danger');
+$message = M::get();
+ return App::redirect('login');
+}
     // public function delete(int $userId) : void
     // {
     //     $userData['id'] = $userId;

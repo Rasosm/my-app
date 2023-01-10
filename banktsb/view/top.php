@@ -13,7 +13,8 @@
     <header class="container header">
     
     <img src="/TSB_logo_2013.png" alt="logo"></a>
-    <div class="virsus">
+    <?php if($pageTitle !=='Registracija') : ?>
+  <div class="virsus">
       <ul class="nav nav-pills">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?= URL . 'saskaitos/' ?>"">Sąskaitų sąrašas</a>
@@ -34,6 +35,8 @@
         </li>
       </ul>
     </div>
+ <?php endif ?>
+  
   </header>
 
     

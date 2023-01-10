@@ -76,7 +76,7 @@ $account_number = 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.r
                 
 
 
-                    <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px">
+                    <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px; margin-top: 0">
                         Sukurti naują sąskaitą
                     </div>
                     <div class="card-body">

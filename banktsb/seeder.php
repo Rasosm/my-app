@@ -16,4 +16,4 @@ $users = [
     ['name' => 'Paršas', 'psw' => md5('321'), 'color' => 'pink']
 ];
 
-file_put_contents(__DIR__ . '/users', serialize($users));
+file_put_contents(__DIR__ . '/app/DB/users', serialize($users));
