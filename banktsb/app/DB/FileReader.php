@@ -18,7 +18,7 @@ class FileReader implements DataBase {
         } 
         else {
             $this->data = unserialize(file_get_contents(__DIR__ . '/' . $this->name));
-            // usort($this->data, fn($a, $b) => $a['surname'] <=> $b['surname']);
+            usort($this->data, fn($a, $b) => $a['surname'] <=> $b['surname']);
         }
     }
 
@@ -96,7 +96,7 @@ class FileReader implements DataBase {
         
     }
 
-    if(!is_numeric($_POST['balance']) && $_POST['balance'] < 0 )
+    if(!is_numeric($_POST['balance']))
     {
         M::add('Netinkamai įvesti duomenys', 'alert-danger');
     }
@@ -107,7 +107,7 @@ class FileReader implements DataBase {
     }
     
     if ($saskaita['id'] == $userId && $saskaita['balance'] < $_POST['balance'] ) {
-      M::add('Nepakanka lėšų', 'alert-danger');
+      M::add('Sąskaitoje nepakanka lėšų', 'alert-danger');
     }    
     }
     }
@@ -122,14 +122,27 @@ class FileReader implements DataBase {
         if ($user['name'] == $_POST['name']) {
              if ($user['psw'] == md5($_POST['psw'])) {
                  $_SESSION['user'] = $user;
-            return App::redirect('saskaitos');
+            M::add('Sveikinu sėkmingai prisijungus!', 'alert-success');
+                 return App::redirect('saskaitos');
+            
+
      }
     }
  }
  M::add('Neteisingas vartotojo vardas arba slaptažodis', 'alert-danger');
-$message = M::get();
- return App::redirect('login');
+ 
+            return App::redirect('login');
 }
+
+// public function logout(): string
+//     {
+//         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+//             session_unset();
+//             session_destroy();
+//             return Application::redirect('/login');
+//         }
+
+//     }
     // public function delete(int $userId) : void
     // {
     //     $userData['id'] = $userId;
@@ -146,6 +159,7 @@ $message = M::get();
     public function delete(int $userId) : void
     {
         $this->data = array_filter($this->data, fn($data) => $userId != $data['id']);
+
     }
 
 

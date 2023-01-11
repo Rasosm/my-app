@@ -24,36 +24,38 @@ class Saskaita {
 
     public function save()
     {
+        $pageTitle = 'Sąskaita | Nauja';
          $_POST['balance']= (float)0;
         if (!preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['name'])) {
-            
+            $pageTitle = 'Sąskaita | Nauja';
             M::add('Prašau įvesti teisingą vardą', 'alert-danger');
             $message = M::get();
-            return App::view('saskaita-create', compact('message'));  
+            return App::view('saskaita-create', compact('message', 'pageTitle'));  
             }
         if (!preg_match('/^[a-zA-ZąĄčČęĘėĖįĮšŠųŲūŪžŽ\s]{4,}$/', $_POST['surname'])) {
-            
+            $pageTitle = 'Sąskaita | Nauja';
             M::add('Prašau įvesti teisingą pavardę', 'alert-danger');
             $message = M::get();
-            return App::view('saskaita-create', compact('message'));  
+            return App::view('saskaita-create', compact('message', 'pageTitle'));  
             }    
 
         if (!preg_match('/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/', $_POST['personal_id'])){
-            
+            $pageTitle = 'Sąskaita | Nauja';
             M::add('Prašau įvesti teisingą asmens kodą', 'alert-danger');
             $message = M::get();
-            return App::view('saskaita-create', compact('message'));  
+            return App::view('saskaita-create', compact('message', 'pageTitle'));  
         }   
 
         $personal_id = (int) $_POST['personal_id'];
 
         if ((new FR('saskaitos'))->unique($_POST['personal_id'])) 
         {
-           
+           $pageTitle = 'Sąskaita | Nauja';
             M::add('Klientas su šiuo asmens kodu jau užregistruotas!', 'alert-danger');
             $message = M::get();
-            return App::view('saskaita-create', compact('message'));
+            return App::view('saskaita-create', compact('message', 'pageTitle'));
         } else {
+            $pageTitle = 'Sąskaita | Nauja';
             (new FR('saskaitos'))->create($_POST);
             M::add('Sveikinu! Sėkmingai sukūrėte naują sąskaitą', 'alert-success');
             //    $message = M::get();
@@ -73,11 +75,27 @@ class Saskaita {
     {
         $pageTitle = 'Registracija';
         (new FR('users'))->check();
+        
+
         // $message = M::get();
         // M::add('Neteisingas vartotojo vardas arba slaptažodis', 'alert-danger');
         // return App::redirect('saskaitos');
     }
-    
+
+    // public function logout()
+    // {
+    //     $pageTitle = 'Registracija';
+    //     return App::redirect('login');
+    // }
+    public function logout(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            session_unset();
+            session_destroy();
+            return App::redirect('login');
+        }
+
+    }
     public function update($id)
     {
         (new FR('saskaitos'))->add($id, $_POST);
@@ -112,6 +130,7 @@ class Saskaita {
 
     public function delete($id)
     {
+        $pageTitle = 'Sąskaitos | Sąrašas';
         $saskaitos = (new FR('saskaitos'))->showAll();
 
         foreach($saskaitos as $index => $saskaita) {
@@ -119,14 +138,16 @@ class Saskaita {
             if ($saskaita['id'] == $id) {
                 if($saskaita['balance'] > 0 ){
                     $error0 = 'Negalima ištrinti sąskaitos jei likutis didesnis už 0 eur.';
-                    return App::view('saskaita-list', compact('error0', 'saskaitos'));
+                    return App::view('saskaita-list', compact('error0', 'saskaitos', 'pageTitle'));
                 }
             }
         }
         
         (new FR('saskaitos'))->delete($id);
-        $successDelete ='Sąskaita sėkmingai ištrinta';
-        return App::view('saskaita-list', compact('successDelete', 'saskaitos'));
+        M::add('Sąskaita sėkmingai ištrinta', 'alert-success');
+        return App::redirect('saskaitos');
+        // $successDelete ='Sąskaita sėkmingai ištrinta';
+        // return App::view('saskaita-list', compact('successDelete', 'saskaitos', 'pageTitle'));
     }
         
   

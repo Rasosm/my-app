@@ -47,6 +47,9 @@ private static function router(array $url)
         if ($url[0] == 'login' && count($url) == 1 && $method == 'POST') {
             return (new Saskaita)->check();
         }
+        if ($url[0] == 'logout' && count($url) == 1 && $method == 'GET') {
+            return (new Saskaita)->logout();
+        }
 
         if ($url[0] == 'saskaitos' && $url[1] == 'delete' && count($url) == 3 && $method == 'POST') {
             return (new Saskaita)->delete($url[2]);
@@ -73,9 +76,8 @@ private static function router(array $url)
 
         extract($data);
 
-          require __DIR__ .'/../view/top.php';
+        require __DIR__ .'/../view/top.php';
     
-
         require __DIR__ .'/../view/'.$__name.'.php';
 
         require __DIR__ .'/../view/bottom.php';  

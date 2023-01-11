@@ -1,4 +1,3 @@
-<?php
 
 // namespace Banktsb\Controllers;
 // use Banktsb\App;
@@ -28,11 +27,14 @@
 //             if ($user['name'] === $_POST['name']) {
 //                 if ($user['psw'] === md5($_POST['psw'])) {
 //                     $_SESSION['user'] = $user;
-//                     Application::redirect('/saskaitos');
+//                     App::redirect('saskaitos');
 //                 }
 //             }
 //         }
-//         $_SESSION['error'] = 'Neteisingas el. paštas arba slaptažodis!';
-//         return Application::redirect('/login');
+
+//         // $_SESSION['error'] = 'Neteisingas el. paštas arba slaptažodis!';
+//         $message = M::get();
+//         M::add('Lėšos sėkmingai pridėtos į sąskaitą', 'alert-success');
+//         return App::view('login', compact('message', 'pageTitle'));
 //     }
-// }
+} -->

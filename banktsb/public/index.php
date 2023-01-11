@@ -2,12 +2,13 @@
 
 use Banktsb\App;
 
-// if (!isset($_SESSION['users']) && $_SERVER['REQUEST_URI'] !== '/login') {
-//     App::redirect('/login');
+
+// if (!isset($_SESSION['user']) && $_SERVER['REQUEST_URI'] !== 'login') {
+//     App::redirect('login');
 // };
 
-// if (isset($_SESSION['users']) && $_SERVER['REQUEST_URI'] === '/login') {
-//     App::redirect('/accounts');
+// if (isset($_SESSION['user']) && $_SERVER['REQUEST_URI'] === 'login') {
+//     App::redirect('saskaitos');
 // };
 
 define('URL', 'http://banktsb.lt/');

@@ -1,5 +1,12 @@
+<header class="container header">
+    <div class="welcome">
+<img src="/TSB_logo_2013.png" alt="logo"></a>
+    </div>
+  
+</header>
 <div class="container">
         <div class="row justify-content-center">
+            
             <?php if(isset($message)) : ?>
             <div class="col-6" style="justify-content: center; display: flex">
                 <div class="alert <?= $message['type'] ?> m-4 d-flex align-items-center" style="text-align: center" role="alert">

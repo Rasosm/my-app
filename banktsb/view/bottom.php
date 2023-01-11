@@ -95,13 +95,13 @@
                         &copy; 2023 All Rights Reserved.
                         
                     </p>
-                    <nav aria-label="secondary navigation" class="footer-nav">
+                    <!-- <nav aria-label="secondary navigation" class="footer-nav">
                         <a href="#" class="footer-link">Home</a>
                         <a href="#" class="footer-link">About</a>
                         <a href="#" class="footer-link">Blog</a>
                         <a href="#" class="footer-link">Shop</a>
                         <a href="#" class="footer-link">FAQs</a>
-                    </nav>
+                    </nav> -->
                 </div>
             </div>
         </div>

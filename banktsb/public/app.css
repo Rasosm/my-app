@@ -10909,3 +10909,10 @@ footer a {
     min-width: 540px;
   }
 }
+@media (max-width: 768px) {
+  .container-md,
+  .container-sm,
+  .container {
+    min-width: 540px;
+  }
+}
