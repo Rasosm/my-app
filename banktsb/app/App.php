@@ -22,6 +22,16 @@ private static function router(array $url)
         if ($url[0] == 'saskaitos' && count($url) == 1 && $method == 'GET') {
             // print_r(new Saskaita);
             //   print_r($url);
+            
+            if (!isset($_SESSION['user']) && $_SERVER['REQUEST_URI'] !== 'login') {
+                App::redirect('login');
+
+            };
+
+            if (isset($_SESSION['user']) && $_SERVER['REQUEST_URI'] === 'login') {
+                App::redirect('saskaitos');
+            };
+
             return (new Saskaita)->index();
         }
 
