@@ -2,14 +2,30 @@
 namespace Banktsb\Controllers;
 use Banktsb\App;
 use Banktsb\DB\FileReader as FR;
+use Banktsb\DB\SqlReader as SQL;
+use App\DB\DataBase;
 use Banktsb\Message as M;
 
 class Saskaita {
 
+     private $setting = 'sql'; // sql arba file
+
+    private function storage($name)
+    {
+        if ($this->setting == 'file') {
+             return new FR('saskaitos');
+        }
+        if ($this->setting == 'sql') {
+            return new SQL('saskaitos');
+       }
+    }
+
     public function index()
     {
         
-        $saskaitos = (new FR('saskaitos'))->showAll();
+        // $saskaitos = (new FR('saskaitos'))->showAll();
+        $saskaitos = $this->storage('saskaitos')->showAll();
+
         $pageTitle = 'Sąskaitos | Sąrašas';
         $message = M::get();
         return App::view('saskaita-list', compact('saskaitos', 'pageTitle', 'message'));
@@ -56,7 +72,10 @@ class Saskaita {
             return App::view('saskaita-create', compact('message', 'pageTitle'));
         } else {
             $pageTitle = 'Sąskaita | Nauja';
-            (new FR('saskaitos'))->create($_POST);
+            // (new FR('saskaitos'))->create($_POST);
+            $this->storage('saskaitos')->create($_POST);
+
+
             M::add('Sveikinu! Sėkmingai sukūrėte naują sąskaitą', 'alert-success');
             //    $message = M::get();
             //    print_r($message);
@@ -98,7 +117,10 @@ class Saskaita {
     }
     public function update($id)
     {
-        (new FR('saskaitos'))->add($id, $_POST);
+        // (new FR('saskaitos'))->add($id, $_POST);
+        $this->storage('saskaitos')->add($id, $_POST);
+
+
         // $message = M::get();
         // M::add('Lėšos sėkmingai pridėtos į sąskaitą', 'alert-success');
         return App::redirect('saskaitos/add/'. $id);
@@ -110,7 +132,10 @@ class Saskaita {
 // print_r($_POST);
         // $error = 'Sąskaitoje nekakanka lėšų';
         // $_POST['error'] = $error; 
-        (new FR('saskaitos'))->transfer($id, $_POST);
+        // (new FR('saskaitos'))->transfer($id, $_POST);
+
+        $this->storage('saskaitos')->transfer($id, $_POST);
+
         // foreach($saskaitos as $index => $saskaita) {
         
         //     if ($saskaita['id'] == $id) {
@@ -131,7 +156,7 @@ class Saskaita {
     public function delete($id)
     {
         $pageTitle = 'Sąskaitos | Sąrašas';
-        $saskaitos = (new FR('saskaitos'))->showAll();
+        $saskaitos = $this->storage('saskaitos')->showAll();
 
         foreach($saskaitos as $index => $saskaita) {
         
@@ -143,7 +168,7 @@ class Saskaita {
             }
         }
         
-        (new FR('saskaitos'))->delete($id);
+        $this->storage('saskaitos')->delete($id);
         M::add('Sąskaita sėkmingai ištrinta', 'alert-success');
         return App::redirect('saskaitos');
         // $successDelete ='Sąskaita sėkmingai ištrinta';
@@ -154,14 +179,14 @@ class Saskaita {
      public function add($id)
     {
         $pageTitle = 'Sąskaita | Pridėti';
-        $saskaita = (new FR('saskaitos'))->show($id);
+        $saskaita = $this->storage('saskaitos')->show($id);
         $message = M::get();
         return App::view('saskaita-add', compact('pageTitle', 'saskaita', 'message'));
     }
     public function transfer($id)
     {
         $pageTitle = 'Sąskaita | Nuskaičiuoti';
-        $saskaita = (new FR('saskaitos'))->show($id);
+        $saskaita = $this->storage('saskaitos')->show($id);
         $message = M::get();          
         return App::view('saskaita-transfer', compact('pageTitle', 'saskaita', 'message'));
     }
