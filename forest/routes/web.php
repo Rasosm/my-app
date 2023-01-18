@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ZooController as Zoo;
 use App\Http\Controllers\CalcController as Calc;
-
+use App\Http\Controllers\PostController as PC;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +26,9 @@ Route::get('/zoo/exit', fn() => 'Ate');
 Route:: get('/zoo/show/{number}', [Zoo::class, 'showAnimal'])->name('animalistic');
 
 Route::get('/calc/{x}/{y}', [Calc::class, 'do']);
+
+Route:: get('/do-sum', [PC::class, 'showForm'])->name('show-form');
+Route:: post('/do-sum', [PC::class, 'doForm'])->name('do-form');
 
 
 Auth::routes();
