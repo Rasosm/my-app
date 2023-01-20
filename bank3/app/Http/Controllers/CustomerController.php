@@ -14,7 +14,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::all()->sortBy('surname');
+        return view('back.customers.index', [
+            'customers' => $customers
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.customers.create');
     }
 
     /**
@@ -35,7 +38,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customer = new Customer;
+        $customer->name = $request->name;
+        $customer->surname = $request->surname;
+        $customer->account_number = $request->account_number;
+        $customer->personal_id = $request->personal_id;
+        $customer->balance = $request->balance;
+
+        $customer->save();
+
+        return redirect()->route('customers-index');
     }
 
     /**
@@ -57,7 +69,9 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        //  return view('back.customers.edit', [
+        //     'customer' => $customer
+        // ]);
     }
 
     /**
@@ -69,7 +83,45 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        //
+        // $customer->name = $request->name;
+        // $customer->surname = $request->surname;
+        // $customer->account_number = $request->account_number;
+        // $customer->personal_id = $request->personal_id;
+        // $customer->balance = $request->balance + $customer->balance;
+
+        // $customer->save();
+
+        // return redirect()->route('customers-index');
+    }
+public function add(Customer $customer)
+    {
+         return view('back.customers.add', [
+            'customer' => $customer
+        ]);
+    }
+
+    public function updateAdd(Request $request, Customer $customer)
+    {
+        $customer->balance = $customer->balance + $request->balance;
+        $customer->save();
+        // return redirect()->route('customers-index');
+        return view('back.customers.add', [
+            'customer' => $customer
+        ]);
+    }
+
+    public function transfer(Customer $customer)
+    {
+         return view('back.customers.transfer', [
+            'customer' => $customer
+        ]);
+    }
+
+    public function updateTransfer(Request $request, Customer $customer)
+    {
+        $customer->balance = $customer->balance - $request->balance;
+        $customer->save();
+        return redirect()->route('customers-index');
     }
 
     /**
@@ -80,6 +132,7 @@ class CustomerController extends Controller
      */
     public function destroy(Customer $customer)
     {
-        //
+         $customer->delete();
+        return redirect()->route('customers-index');
     }
 }

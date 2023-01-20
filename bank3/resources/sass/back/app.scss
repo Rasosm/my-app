@@ -6,3 +6,191 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+body {
+    background-color: rgb(209, 215, 215);
+    color: #00012e;
+    font-family: Roboto;
+}
+
+.welcome {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+img {
+    width: 120px;
+    // float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.logout {
+    float: right;
+    margin-left: 20px;
+}
+
+.nav-item {
+    float: right;
+    // background-color: black;
+}
+
+.nav-link {
+    color: #00012E;
+    // font-weight: bold;
+    font-family: Roboto;
+    color: #025984 !important;
+    font-size: 18px;
+}
+
+a.nav-link.active {
+    background: rgb(209, 215, 215) !important;
+    color: #025984 !important;
+    border-bottom: 2px solid #025984;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-weight: bold;
+
+
+    border-radius: 0px !important;
+}
+
+.card {
+    margin: 15px;
+    padding: 0;
+}
+
+.card-title {
+    margin-bottom: 0px;
+    padding: 8px;
+}
+
+.card-body {
+    padding: 16px 20px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+.virsus {
+    display: block;
+    float: right;
+
+}
+
+.alert {
+    text-align: center;
+}
+
+header {
+    a {
+        font-size: 18px;
+    }
+}
+
+a {
+    text-decoration: none;
+
+}
+
+// .header-container {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     background-color: transparent;
+//     padding-top: 0.7rem;
+//     padding-bottom: 0.7rem;
+//     overflow: hidden;
+//     transition: all ease-out 0.3s;
+//     z-index: 9999;
+// }
+
+.header {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+
+}
+
+h5 {
+    font-size: 1.1rem;
+}
+
+footer {
+    margin-top: 40px;
+    font-style: italic;
+    color: #025984;
+
+    .footer-title {
+        font-style: normal;
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    a {
+        font-size: 13px;
+        // color: black;
+        color: #025984;
+
+    }
+}
+
+.footer-title {
+    font-style: normal;
+}
+
+// @media (max-width: 768px) {
+//     .conteiner{
+
+// width: 90%;
+//     }
+//     .col-7 {
+//         flex: 0 0 auto;
+//         width: 90%;
+//     }
+
+//     .form-control {
+//         font-size: 15px;
+//     }
+
+// }
+// @media (min-width: 576px) {
+// .container-sm,
+// .container {
+//     min-width: 540px; 
+// }
+// }
+
+@media (min-width: 576px) {
+
+    .container-md,
+    .container-sm,
+    .container {
+        min-width: 540px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container-md,
+    .container-sm,
+    .container {
+        min-width: 540px;
+    }
+}
