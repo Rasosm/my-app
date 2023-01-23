@@ -69,9 +69,9 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        //  return view('back.customers.edit', [
-        //     'customer' => $customer
-        // ]);
+         return view('back.customers.edit', [
+            'customer' => $customer
+        ]);
     }
 
     /**
@@ -83,15 +83,15 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
-        // $customer->name = $request->name;
-        // $customer->surname = $request->surname;
-        // $customer->account_number = $request->account_number;
-        // $customer->personal_id = $request->personal_id;
-        // $customer->balance = $request->balance + $customer->balance;
+        $customer->name = $request->name;
+        $customer->surname = $request->surname;
+        $customer->account_number = $request->account_number;
+        $customer->personal_id = $request->personal_id;
+        $customer->balance = $request->balance;
 
-        // $customer->save();
+        $customer->save();
 
-        // return redirect()->route('customers-index');
+        return redirect()->route('customers-index');
     }
 public function add(Customer $customer)
     {

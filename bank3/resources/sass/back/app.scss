@@ -1,5 +1,6 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+// @import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
 
 // Variables
 @import 'variables';
@@ -7,12 +8,15 @@
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+
 
 body {
-    background-color: rgb(209, 215, 215);
+    // background-color: rgb(209, 215, 215);
+    background-color:#2B4865;
     color: #00012e;
     font-family: Roboto;
+    font-weight: 400;
+    font-size: 18px;
 }
 
 .welcome {
@@ -20,10 +24,12 @@ body {
     justify-content: center;
     text-align: center;
     align-items: center;
+    
 }
 
 p {
     margin-bottom: 0;
+    font-size: 18px;
 }
 
 img {
@@ -53,7 +59,7 @@ img {
 
 a.nav-link.active {
     background: rgb(209, 215, 215) !important;
-    color: #025984 !important;
+    color: #025984;
     border-bottom: 2px solid #025984;
     padding-bottom: 0px;
     padding-left: 0px;
@@ -64,6 +70,10 @@ a.nav-link.active {
     border-radius: 0px !important;
 }
 
+a.nav-link{
+    font-size: 20px;
+    font-weight: bold;
+}
 .card {
     margin: 15px;
     padding: 0;
@@ -85,7 +95,6 @@ h5 {
 .virsus {
     display: block;
     float: right;
-
 }
 
 .alert {
@@ -101,6 +110,12 @@ header {
 a {
     text-decoration: none;
 
+}
+
+button.btn{
+// background-color: #8FE3CF;
+// color: #025984;
+font-size: 18px;
 }
 
 // .header-container {
