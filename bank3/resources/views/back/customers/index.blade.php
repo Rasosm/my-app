@@ -4,6 +4,16 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        @if($errors)
+        @foreach ($errors->all() as $message)
+        <div class="col-6">
+            <div class="alert alert-danger m-4" role="alert">
+                {{ $message }}
+            </div>
+        </div>
+        @endforeach
+        @endif
+
         @forelse($customers as $customer)
         <div class="card" style="margin-bottom: 5px">
             <div class="card-header" style="display: inherit">

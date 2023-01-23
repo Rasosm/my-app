@@ -109,13 +109,19 @@ header {
 
 a {
     text-decoration: none;
+    // color: #0dcaf0;
+    // color: #5B8FB9;
+    // font-size: 700;
+
 
 }
 
 button.btn{
-// background-color: #8FE3CF;
-// color: #025984;
+// background-color: #5B8FB9;
+// color: #5B8FB9;
+color: #0dcaf0;
 font-size: 18px;
+font-size: bold;
 }
 
 // .header-container {
@@ -147,7 +153,8 @@ h5 {
 footer {
     margin-top: 40px;
     font-style: italic;
-    color: #025984;
+    // color: #025984;
+    color: #fff;
 
     .footer-title {
         font-style: normal;
@@ -161,7 +168,8 @@ footer {
     a {
         font-size: 13px;
         // color: black;
-        color: #025984;
+        // color: #025984;
+        color: #fff;
 
     }
 }

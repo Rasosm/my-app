@@ -8,6 +8,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    {{-- <title>@yield('content')</title> --}}
+
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,6 +93,7 @@
         <main class="py-4">
             @yield('content')
         </main>
+        @include('back.customers.footer')
     </div>
 </body>
 </html>

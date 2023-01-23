@@ -1,9 +1,20 @@
 @extends('layouts.app')
 
+{{-- @section('title', 'Pridėti') --}}
 @section('content')
 
 <div class="container">
     <div class="row justify-content-center">
+        @if($errors)
+        @foreach ($errors->all() as $message)
+        <div class="col-6">
+            <div class="alert alert-danger m-4" role="alert">
+                {{ $message }}
+            </div>
+        </div>
+        @endforeach
+        @endif
+
         <div class="card">
             <div class="card-header">
                 <h5 style="font-size: 18px; font-weight: bold" class="card-title">{{$customer->name}} {{$customer->surname}}</h5>
