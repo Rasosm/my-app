@@ -52,7 +52,7 @@ class DrinkController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'drink_title' => 'required|alpha|min:3|max:100',
+            'drink_title' => 'required|alpha|min:3|max:100|regex:/^T/',
             'drink_vol' => 'sometimes|decimal:0,1|min:1|max:99',
             'drink_size' => 'required|min:1|max:9999',
             'drink_price' => 'required|decimal:0,2|min:0|max:999',

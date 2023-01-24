@@ -4,15 +4,6 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        @if($errors)
-        @foreach ($errors->all() as $message)
-        <div class="col-6">
-            <div class="alert alert-danger m-4" role="alert">
-                {{ $message }}
-            </div>
-        </div>
-        @endforeach
-        @endif
         <div class="col-7" style="margin-top: 0">
             <div class="card m-4">
                 <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px; margin-top: 0">
@@ -36,29 +27,29 @@
 
 
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="form-label">Sąskaitos numeris</label>
                             <input type="text" name="account_number" class="form-control" placeholder="sąskaitos numeris" value="{{old('account_number')}}">
 
 
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Sąskaitos numeris</label>
-                            <input type="text" name="balance" class="form-control" placeholder="likutis" value="{{old('balance')}}">
-
-                        </div>
-
-                        <div class="mb-3" style="justify-content: center; display: flex">
-                            <button type="submit" class="btn btn-outline-info mt-4">Patvirtinti</button>
-                        </div>
-                        @csrf
-
-                    </form>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Sąskaitos numeris</label>
+                    <input type="text" name="balance" class="form-control" placeholder="likutis" value="{{old('balance')}}">
+
+                </div> --}}
+
+                <div class="mb-3" style="justify-content: center; display: flex">
+                    <button type="submit" class="btn btn-outline-info mt-4">Patvirtinti</button>
+                </div>
+                @csrf
+
+                </form>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 
 @endsection

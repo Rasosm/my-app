@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +49,7 @@ class CustomerController extends Controller
             [
             'name' => 'required|alpha|min:4',
             'surname' => 'required|alpha|min:4',
-            'personal_id' => 'required|numeric',
+            // 'personal_id' => 'required|numeric|regex:/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/',
 
             ],
             [
@@ -60,9 +65,10 @@ class CustomerController extends Controller
 
             ]);
 
-             $request->flash();
+             
 
              if ($validator->fails()) {
+                $request->flash();
                 return redirect()->back()->withErrors($validator);
             }
 
@@ -70,14 +76,14 @@ class CustomerController extends Controller
         $customer = new Customer;
         $customer->name = $request->name;
         $customer->surname = $request->surname;
-        $customer->account_number = $request->account_number;
+        $customer->account_number = 'LT82'.' '. '7300'.' '.'0'.rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9).' '.rand(0,9).rand(0,9).rand(0,9).rand(0,9);;
         $customer->personal_id = $request->personal_id;
-        $customer->balance = $request->balance;
+        $customer->balance = 0;
 
         $customer->save();
        
 
-        return redirect()->route('customers-index');
+        return redirect()->route('customers-index')->with('ok', 'Sveikinu, sėkmingai sukūrėte naują sąskaitą');
     }
 
     /**
@@ -116,18 +122,18 @@ class CustomerController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'name' => 'required|string|min:4',
-            'surname' => 'required|string|min:4',
+            'name' => 'required|alpha|min:4',
+            'surname' => 'required|alpha|min:4',
             'personal_id' => 'required|numeric',
 
             ],
             [
                 'name.required' => 'Prašau įvesti vardą',
                 'name.min' => 'Vardas turi būti mažiausiai iš 4 raidžių',
-                'name.string' => 'Neteisingai įvestas vardas',
+                'name.alpha' => 'Neteisingai įvestas vardas',
                 'surname.required' => 'Prašau įvesti pavardę',
                 'surname.min' => 'Pavardė turi būti mažiausiai iš 4 raidžių',
-                'surname.string' => 'Neteisingai įvesta pavardė',
+                'surname.alpha' => 'Neteisingai įvesta pavardė',
                 'personal_id.required' => 'Prašau įvesti asmens kodą',
                 // 'personal_id.size' => 'Neteisingai įvestas asmens kodas',
                 'personal_id.numeric' => 'Asmens kodas turi būti sudarytas iš skaitmenų',
@@ -149,7 +155,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return redirect()->route('customers-index');
+        return redirect()->route('customers-index')->with('ok', 'Sąskaita sėkmingai redaguota');
     }
 public function add(Customer $customer)
     {
@@ -163,25 +169,23 @@ public function add(Customer $customer)
          $validator = Validator::make(
             $request->all(),
             [
-            'balance' => 'numeric',
+            'balance' => 'numeric|min:0',
             ],
             [
                 'balance.numeric' => 'Prašau įvesti skaičius',
+                'balance.min' => 'Prašau įvesti teigiamus skaičius',
                
             ]);
 
-             $request->flash();
-
              if ($validator->fails()) {
+                $request->flash();
                 return redirect()->back()->withErrors($validator);
             }
 
         $customer->balance = $customer->balance + $request->balance;
         $customer->save();
-        // return redirect()->route('customers-index');
-        return view('back.customers.add', [
-            'customer' => $customer
-        ]);
+        return redirect()->back()->with('ok', 'Pinigai sėkmingai pridėti');
+        
     }
 
     public function transfer(Customer $customer)
@@ -196,10 +200,11 @@ public function add(Customer $customer)
         $validator = Validator::make(
             $request->all(),
             [
-            'balance' => 'numeric',
+            'balance' => 'numeric|min:0',
             ],
             [
                 'balance.numeric' => 'Prašau įvesti skaičius',
+                'balance.min' => 'Prašau įvesti teigiamus skaičius',
                
             ]);
 
@@ -209,9 +214,14 @@ public function add(Customer $customer)
                 return redirect()->back()->withErrors($validator);
             }
 
-        $customer->balance = $customer->balance - $request->balance;
+        if ($customer->balance > $request->balance){
+            $customer->balance = $customer->balance - $request->balance;    
         $customer->save();
-        return redirect()->route('customers-index');
+        return redirect()->back()->with('ok', 'Pinigai sėkmingai nuskaityti');
+        }else{
+        return redirect()->back()->with('not', 'Nepakanka lėšų');
+        }    
+        
     }
 
     /**
@@ -222,7 +232,11 @@ public function add(Customer $customer)
      */
     public function destroy(Customer $customer)
     {
+        if ($customer->balance == 0){
         $customer->delete();
-        return redirect()->route('customers-index');
+        return redirect()->route('customers-index')->with('ok', 'Sąskaita sėkmingai ištrinta');
+        }
+         return redirect()->back()->with('not', 'Negalima ištrinti sąskaitos jei likutis didesnis nei 0');
+
     }
 }

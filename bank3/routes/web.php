@@ -31,6 +31,6 @@ Route::prefix('admin/customers')->name('customers-')->group(function () {
     Route::delete('/delete/{customer}', [C::class, 'destroy'])->name('delete');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
