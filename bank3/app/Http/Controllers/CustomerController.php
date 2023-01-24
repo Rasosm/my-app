@@ -42,18 +42,18 @@ class CustomerController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'name' => 'required|string|min:4',
-            'surname' => 'required|string|min:4',
+            'name' => 'required|alpha|min:4',
+            'surname' => 'required|alpha|min:4',
             'personal_id' => 'required|numeric',
 
             ],
             [
                 'name.required' => 'Prašau įvesti vardą',
                 'name.min' => 'Vardas turi būti mažiausiai iš 4 raidžių',
-                'name.string' => 'Neteisingai įvestas vardas',
+                'name.alpha' => 'Neteisingai įvestas vardas',
                 'surname.required' => 'Prašau įvesti pavardę',
                 'surname.min' => 'Pavardė turi būti mažiausiai iš 4 raidžių',
-                'surname.string' => 'Neteisingai įvesta pavardė',
+                'surname.alpha' => 'Neteisingai įvesta pavardė',
                 'personal_id.required' => 'Prašau įvesti asmens kodą',
                 'personal_id.size' => 'Neteisingai įvestas asmens kodas',
                 'personal_id.numeric' => 'Asmens kodas turi būti sudarytas iš skaitmenų',

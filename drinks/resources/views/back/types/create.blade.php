@@ -13,6 +13,7 @@
                         <div class="mb-3">
                             <label class="form-label">Type title</label>
                             <input type="text" class="form-control" name="type_title">
+
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="1" id="type-alk" name="is_alk">

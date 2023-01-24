@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TypeController extends Controller
 {
@@ -38,12 +39,37 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+            'type_title' => 'required|min:3|max:100',
+            'is_alk' => 'sometimes|numeric|min:1|max:1',
+            ]);
+
+           
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+        
+
+        // $validator->after(function ($validator) use ($request) {
+        //     if ($request->sum_x + $request->sum_y > 150) {
+        //         $validator->errors()->add(
+        //             'x_y', 'Sum is to big!'
+        //         );
+        //     }
+        // });
+        
+               
         $type = new Type;
         $type->title = $request->type_title;
         $type->is_alk = $request->is_alk ?? 0;
         $type->save();
 
-        return redirect()->route('types-index');
+        // return redirect()->route('types-index');
+        return redirect()->route('types-index')->with('ok', 'New type was created');
+
 
     }
 
@@ -97,8 +123,8 @@ class TypeController extends Controller
     {
             if (!$type->typeDrinks()->count()) {
             $type->delete();
-            return redirect()->route('types-index');
+            return redirect()->route('types-index')->with('ok', 'Type was deleted');
         }
-        return 'negalima';
+        return redirect()->back()->with('not', 'Type has drinks');
     }
 }

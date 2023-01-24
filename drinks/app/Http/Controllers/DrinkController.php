@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Drink;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DrinkController extends Controller
 {
@@ -47,6 +48,33 @@ class DrinkController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = Validator::make(
+            $request->all(),
+            [
+            'drink_title' => 'required|alpha|min:3|max:100',
+            'drink_vol' => 'sometimes|decimal:0,1|min:1|max:99',
+            'drink_size' => 'required|min:1|max:9999',
+            'drink_price' => 'required|decimal:0,2|min:0|max:999',
+            'type_id' => 'required|numeric|min:1',
+            ]);
+
+           
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+        
+
+        // $validator->after(function ($validator) use ($request) {
+        //     if ($request->sum_x + $request->sum_y > 150) {
+        //         $validator->errors()->add(
+        //             'x_y', 'Sum is to big!'
+        //         );
+        //     }
+        // });
+        
+
         $drink = new Drink;
 
         $type = Type::find($request->type_id);
@@ -60,7 +88,7 @@ class DrinkController extends Controller
 
         $drink->save();
 
-        return redirect()->route('drinks-index');
+        return redirect()->route('drinks-index')->with('ok', 'New drink was created');
 
     }
 
