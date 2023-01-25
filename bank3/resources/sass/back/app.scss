@@ -78,7 +78,18 @@ a.nav-link{
     margin: 15px;
     padding: 0;
 }
-
+.login-alert {
+    margin-top: 80px;
+    margin-bottom: 150px;
+}
+.create{
+    text-align: center;
+        color: #006394;
+        // font-weight: bold;
+        letter-spacing: 1px;
+        font-size: 24px;
+        margin-top: 0;
+}
 .card-title {
     margin-bottom: 0px;
     padding: 8px;
@@ -100,6 +111,7 @@ h5 {
 .alert {
     text-align: center;
 }
+
 
 header {
     a {
@@ -152,6 +164,7 @@ h5 {
 
 footer {
     margin-top: 40px;
+    margin-left: 140px;
     font-style: italic;
     // color: #025984;
     color: #fff;

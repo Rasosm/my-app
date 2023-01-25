@@ -1,8 +1,9 @@
 <footer class="footer">
     <div class="container">
-        <div class="row footer-row-1">
+        <div class="row footer-row-1 justify-content-center">
 
-            <div class="col-12 col-lg-4 col-xl-3">
+
+            <div class="col-12 col-lg-4 col-xl-3 style=">
                 <h5 class="footer-title">IT departamentas</h5>
                 <div class="footer-contact-box">
                     <i class="fa-solid fa-phone footer-contact-icon"></i><a href="tel:+88015569569" class="footer-link">Tel. +370 5 214 23753</a>
@@ -93,13 +94,18 @@
                     &copy; 2023 All Rights Reserved.
 
                 </p>
-                <!-- <nav aria-label="secondary navigation" class="footer-nav">
-                        <a href="#" class="footer-link">Home</a>
-                        <a href="#" class="footer-link">About</a>
-                        <a href="#" class="footer-link">Blog</a>
-                        <a href="#" class="footer-link">Shop</a>
-                        <a href="#" class="footer-link">FAQs</a>
-                    </nav> -->
+                <nav aria-label="secondary navigation" class="footer-nav">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span class="bi bi-telephone"></span>
+                    <button type="button" class="btn btn-light"><span class="bi bi-telephone"></span></button>
+
+
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Shop</a>
+                    <a href="#" class="footer-link">FAQs</a>
+                </nav>
             </div>
         </div>
     </div>

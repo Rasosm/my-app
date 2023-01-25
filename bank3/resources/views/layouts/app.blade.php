@@ -30,7 +30,7 @@
             {{ config('app.name', 'Laravel') }}
             </a> --}}
             <a href"{{route('customers-index')}}">
-                <img src="../TSB_logo_2013.png" alt="logo">
+                <img src="{{asset('img/TSB_logo_2013.png')}}" alt="logo">
             </a>
 
 

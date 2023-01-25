@@ -49,7 +49,7 @@ class CustomerController extends Controller
             [
             'name' => 'required|alpha|min:4',
             'surname' => 'required|alpha|min:4',
-            // 'personal_id' => 'required|numeric|regex:/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/',
+            'personal_id' => 'required|integer|regex:/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/',
 
             ],
             [
@@ -60,7 +60,7 @@ class CustomerController extends Controller
                 'surname.min' => 'Pavardė turi būti mažiausiai iš 4 raidžių',
                 'surname.alpha' => 'Neteisingai įvesta pavardė',
                 'personal_id.required' => 'Prašau įvesti asmens kodą',
-                'personal_id.size' => 'Neteisingai įvestas asmens kodas',
+                'personal_id.regex' => 'Neteisingai įvestas asmens kodas',
                 'personal_id.numeric' => 'Asmens kodas turi būti sudarytas iš skaitmenų',
 
             ]);
@@ -214,7 +214,7 @@ public function add(Customer $customer)
                 return redirect()->back()->withErrors($validator);
             }
 
-        if ($customer->balance > $request->balance){
+        if ($customer->balance >= $request->balance){
             $customer->balance = $customer->balance - $request->balance;    
         $customer->save();
         return redirect()->back()->with('ok', 'Pinigai sėkmingai nuskaityti');

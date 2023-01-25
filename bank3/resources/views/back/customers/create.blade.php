@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-7" style="margin-top: 0">
             <div class="card m-4">
-                <div class="card-header" style="text-align: center; color: #006394; font-weight: bold; letter-spacing: 1px; font-size: 18px; margin-top: 0">
+                <div class="card-header create">
                     Sukurti naują sąskaitą
                 </div>
                 <div class="card-body">
