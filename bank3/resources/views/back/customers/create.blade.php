@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Nauja sąskaita')
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -29,25 +31,26 @@
                         </div>
                         {{-- <div class="mb-3">
                             <label class="form-label">Sąskaitos numeris</label>
-                            <input type="text" name="account_number" class="form-control" placeholder="sąskaitos numeris" value="{{old('account_number')}}">
+                            <input type="text" name="account_number" class="form-control" placeholder="sąskaitos numeris" value="{{$customer->account_number}}">
 
 
-                </div>
-                <div class="mb-3">
+
+                </div> --}}
+                {{-- <div class="mb-3">
                     <label class="form-label">Sąskaitos numeris</label>
                     <input type="text" name="balance" class="form-control" placeholder="likutis" value="{{old('balance')}}">
 
-                </div> --}}
+            </div> --}}
 
-                <div class="mb-3" style="justify-content: center; display: flex">
-                    <button type="submit" class="btn btn-outline-info mt-4">Patvirtinti</button>
-                </div>
-                @csrf
-
-                </form>
+            <div class="mb-3" style="justify-content: center; display: flex">
+                <button type="submit" class="btn btn-outline-info mt-4">Patvirtinti</button>
             </div>
+            @csrf
+
+            </form>
         </div>
     </div>
+</div>
 
 </div>
 </div>

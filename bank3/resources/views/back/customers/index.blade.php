@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Sąrašas')
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -17,7 +19,7 @@
         @forelse($customers as $customer)
         <div class="card" style="margin-bottom: 5px">
             <div class="card-header" style="display: inherit">
-                <p class="card-title" style="font-size: 20px; font-weight: bold; line-height: 1.4">{{$customer->name}} {{$customer->surname}}</p>
+                <p class="card-title" style="font-size: 18px; font-weight: bold; line-height: 1.4">{{$customer->name}} {{$customer->surname}}</p>
                 <p class="card-title" style="margin-left: 7px;">a.k. {{$customer->personal_id}}</p>
             </div>
             <div class="card-body">

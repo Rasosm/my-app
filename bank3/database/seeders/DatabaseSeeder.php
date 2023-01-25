@@ -26,5 +26,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'briedis@gmail.com',
             'password' => Hash::make('321'),
         ]);
+
+        DB::table('customers')->insert([
+            'name' => 'Saulė',
+            'surname' => 'Saulaitė',
+            'account_number' => 'LT82 7300 0070 7151 1011',
+            'personal_id' => '49901150735',
+            'balance' => '350046.45',
+        ]);
+        DB::table('customers')->insert([
+            'name' => 'Gabrielė',
+            'surname' => 'Gabrelytė',
+            'account_number' => 'LT82 7300 0070 8400 1034',
+            'personal_id' => '60908250142',
+            'balance' => '90450.99',
+        ]);
     }
 }

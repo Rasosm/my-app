@@ -2,6 +2,8 @@
 
 {{-- @section('title', 'Pridėti') --}}
 @section('content')
+@section('title', 'Pridėti')
+
 
 <div class="container">
     <div class="row justify-content-center">

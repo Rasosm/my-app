@@ -49,8 +49,7 @@ class CustomerController extends Controller
             [
             'name' => 'required|alpha|min:4',
             'surname' => 'required|alpha|min:4',
-            'personal_id' => 'required|integer|regex:/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/',
-
+            'personal_id' => 'required|integer|unique:customers,personal_id|regex:/^([3-6]{1})([0-9]{2})([0-1]{1})([0-9]{1})([0-3]{1})([0-9]{1})([0-9999]{4})$/'
             ],
             [
                 'name.required' => 'Prašau įvesti vardą',
@@ -61,7 +60,8 @@ class CustomerController extends Controller
                 'surname.alpha' => 'Neteisingai įvesta pavardė',
                 'personal_id.required' => 'Prašau įvesti asmens kodą',
                 'personal_id.regex' => 'Neteisingai įvestas asmens kodas',
-                'personal_id.numeric' => 'Asmens kodas turi būti sudarytas iš skaitmenų',
+                'personal_id.integer' => 'Asmens kodas turi būti sudarytas iš skaitmenų',
+                'personal_id.unique' => 'Toks asmens kodas jau egzistuoja',
 
             ]);
 
@@ -124,19 +124,19 @@ class CustomerController extends Controller
             [
             'name' => 'required|alpha|min:4',
             'surname' => 'required|alpha|min:4',
-            'personal_id' => 'required|numeric',
-
+            'personal_id' => 'required|integer|regex:/^([3-6]{1})([0-9]{2})([0-1]{1})([0-9]{1})([0-3]{1})([0-9]{1})([0-9999]{4})$/'
             ],
             [
-                'name.required' => 'Prašau įvesti vardą',
+                 'name.required' => 'Prašau įvesti vardą',
                 'name.min' => 'Vardas turi būti mažiausiai iš 4 raidžių',
                 'name.alpha' => 'Neteisingai įvestas vardas',
                 'surname.required' => 'Prašau įvesti pavardę',
                 'surname.min' => 'Pavardė turi būti mažiausiai iš 4 raidžių',
                 'surname.alpha' => 'Neteisingai įvesta pavardė',
                 'personal_id.required' => 'Prašau įvesti asmens kodą',
-                // 'personal_id.size' => 'Neteisingai įvestas asmens kodas',
-                'personal_id.numeric' => 'Asmens kodas turi būti sudarytas iš skaitmenų',
+                'personal_id.regex' => 'Neteisingai įvestas asmens kodas',
+                'personal_id.integer' => 'Asmens kodas turi būti sudarytas iš skaitmenų',
+                
 
             ]);
 
@@ -151,7 +151,7 @@ class CustomerController extends Controller
         $customer->surname = $request->surname;
         $customer->account_number = $request->account_number;
         $customer->personal_id = $request->personal_id;
-        $customer->balance = $request->balance;
+        $customer->balance = $customer->balance;
 
         $customer->save();
 

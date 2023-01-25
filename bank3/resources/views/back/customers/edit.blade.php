@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Redagavimas')
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -34,25 +36,25 @@
 
 
                         </div>
-                        <div class=" mb-3">
+                        {{-- <div class=" mb-3">
                             <label class="form-label">Sąskaitos numeris</label>
                             <input type="text" name="balance" class="form-control" placeholder="likutis" value="{{$customer->balance}}">
 
 
-                        </div>
+                </div> --}}
 
-                        <div class=" mb-3" style="justify-content: center; display: flex">
-                            <button type="submit" class="btn btn-outline-info mt-4">Išsaugoti</button>
-                        </div>
-                        @csrf
-                        @method('put')
-
-                    </form>
+                <div class=" mb-3" style="justify-content: center; display: flex">
+                    <button type="submit" class="btn btn-outline-info mt-4">Išsaugoti</button>
                 </div>
+                @csrf
+                @method('put')
+
+                </form>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 
 @endsection

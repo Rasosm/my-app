@@ -7,8 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    {{-- <title>@yield('content')</title> --}}
+    {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+    <title>@yield('title')</title>
 
 
 
@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
-
+    <link href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/back/app.scss', 'resources/js/back/app.js'])

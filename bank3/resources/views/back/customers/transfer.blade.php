@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Nuskaičiuoti')
+
 
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +10,6 @@
         <div class="card">
             <div class="card-header">
                 <h5 style="font-size: 18px; font-weight: bold" class="card-title">{{$customer->name}} {{$customer->surname}}</h5>
-
             </div>
             <div class="card-body">
                 <p class="card-text">{{$customer->account_number}}</p>
