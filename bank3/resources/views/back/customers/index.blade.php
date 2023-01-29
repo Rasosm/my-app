@@ -45,6 +45,20 @@
                 </div>
             </div>
 
+            <div class="col-2">
+                <div class="mb-3">
+                    <label class="form-label">Rodyti</label>
+                    <select class="form-select" name="per_page">
+                        {{-- <option>default</option> --}}
+                        @foreach($perPageSelect as $value)
+                        <option value="{{$value}}" @if($perPageShow==$value) selected @endif>{{$value}}</option>
+
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+
         </form>
 
 
@@ -99,6 +113,11 @@
 
 
     </div>
+    @if($perPageShow != 'visi')
+    <div class="m-2">
+        {{$customers->links()}}
+    </div>
+    @endif
 </div>
 </div>
 

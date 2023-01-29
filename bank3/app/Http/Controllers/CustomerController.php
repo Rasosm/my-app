@@ -20,27 +20,36 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        // if($request->s){
-        //      $customers = Customer::where('name', 'like', '%'.$request->s.'%')->get();
-        // }
+        if($request->s){
+             $customers = Customer::where('name', 'like', '%'.$request->s.'%')->get();
+        }
 
         $customers = match($request->sort ?? '') {
-                'asc_name' => Customer::orderBy('name'),
-                'desc_name' => Customer::orderBy('name', 'desc'),
-                'asc_surname' => Customer::orderBy('surname'),
-                'desc_surname' => Customer::orderBy('surname', 'desc'),
+                'asc_name' => Customer::orderBy('name')->orderBy('surname'),
+                'desc_name' => Customer::orderBy('name', 'desc')->orderBy('surname', 'desc'),
+                'asc_surname' => Customer::orderBy('surname')->orderBy('name'),
+                'desc_surname' => Customer::orderBy('surname', 'desc')->orderBy('name', 'desc'),
                 'asc_balance' => Customer::orderBy('balance'),
                 'desc_balance' => Customer::orderBy('balance', 'desc'),
-                default => Customer::where('id', '>', 0)
+                default => Customer::orderBy('surname')->orderBy('name')->where('id', '>', 0)
             };
 
-            $customers = $customers->get();
+            $perPageShow = in_array($request->per_page, Customer::PER_PAGE) ? $request->per_page : 'visi';
+            if( $perPageShow == 'visi'){
+                $customers = $customers->get();
+            }else{
+                $customers = $customers->paginate($perPageShow)->withQueryString();
+            }
+            
 
-        // $customers = Customer::all()->sortBy('surname');
+        // $customers = Customer::all()->sortBy('surname')->sortBy('name');
         return view('back.customers.index', [
             'customers' => $customers,
             'sortSelect' => Customer::SORT,
             'sortShow' => isset(Customer::SORT[$request->sort]) ? $request->sort : '',
+            'perPageSelect' => Customer::PER_PAGE,
+            // 'perPageShow' => in_array($request->per_page, Customer::PER_PAGE) ? $request->per_page : 'visi',
+            'perPageShow' =>  $perPageShow,
             's' => $request->s ?? ''
         ]);
     }

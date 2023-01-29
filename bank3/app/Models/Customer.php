@@ -18,4 +18,8 @@ class Customer extends Model
         'desc_balance' => 'Balance 9-0'
 
     ];
+
+    const PER_PAGE = [
+        'visi', 4, 8, 24, 48
+    ];
 }
