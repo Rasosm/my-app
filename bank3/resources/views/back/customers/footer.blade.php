@@ -94,7 +94,7 @@
                     &copy; 2023 All Rights Reserved.
 
                 </p>
-                <nav aria-label="secondary navigation" class="footer-nav">
+                {{-- <nav aria-label="secondary navigation" class="footer-nav">
                     <i class="fa-brands fa-facebook"></i>
                     <span class="bi bi-telephone"></span>
                     <button type="button" class="btn btn-light"><span class="bi bi-telephone"></span></button>
@@ -105,7 +105,7 @@
                     <a href="#" class="footer-link">Blog</a>
                     <a href="#" class="footer-link">Shop</a>
                     <a href="#" class="footer-link">FAQs</a>
-                </nav>
+                </nav> --}}
             </div>
         </div>
     </div>

@@ -18,11 +18,30 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = Customer::all()->sortBy('surname');
+        // if($request->s){
+        //      $customers = Customer::where('name', 'like', '%'.$request->s.'%')->get();
+        // }
+
+        $customers = match($request->sort ?? '') {
+                'asc_name' => Customer::orderBy('name'),
+                'desc_name' => Customer::orderBy('name', 'desc'),
+                'asc_surname' => Customer::orderBy('surname'),
+                'desc_surname' => Customer::orderBy('surname', 'desc'),
+                'asc_balance' => Customer::orderBy('balance'),
+                'desc_balance' => Customer::orderBy('balance', 'desc'),
+                default => Customer::where('id', '>', 0)
+            };
+
+            $customers = $customers->get();
+
+        // $customers = Customer::all()->sortBy('surname');
         return view('back.customers.index', [
-            'customers' => $customers
+            'customers' => $customers,
+            'sortSelect' => Customer::SORT,
+            'sortShow' => isset(Customer::SORT[$request->sort]) ? $request->sort : '',
+            's' => $request->s ?? ''
         ]);
     }
 

@@ -16,7 +16,8 @@
                 <p style="font-weight: bold"> Likutis: {{$customer->balance}} eur</p>
             </div>
             <form style="padding: 0 16px" action="{{route('customers-updateAdd', $customer)}}" method="post">
-                <input type="text" name="balance" class="form-control" placeholder="0.00">
+                <input type="text" name="balance" class="form-control" placeholder="0.00" value="{{old('balance')}}">
+
                 <button style="margin-bottom: 10px" type="submit" class="btn btn-outline-info mt-4">Pridėti lėšas</button>
                 @csrf
                 @method('put')

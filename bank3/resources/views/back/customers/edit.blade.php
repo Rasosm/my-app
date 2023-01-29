@@ -44,7 +44,8 @@
                 </div> --}}
 
                 <div class=" mb-3" style="justify-content: center; display: flex">
-                    <button type="submit" class="btn btn-outline-info mt-4">Išsaugoti</button>
+                    <button type="submit" class="btn btn-outline-info mt-4" style="backgroun-color:#0dcaf0; color: fff">Išsaugoti</button>
+
                 </div>
                 @csrf
                 @method('put')

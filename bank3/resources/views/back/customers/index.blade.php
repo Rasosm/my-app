@@ -6,6 +6,50 @@
 
 <div class="container">
     <div class="row justify-content-center">
+
+        <form action="{{route('customers-index')}}" method="get">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label class="form-label">Paieška</label>
+                            <input type="text" class="form-control" name="s" value="{{$s}}">
+
+                        </div>
+                    </div>
+                    <div class=" col-4">
+                        <div class="head-buttons">
+                            <button type="submit" class="btn btn-outline-primary mt-3">Ieškoti</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="head-buttons">
+                    <button type="submit" class="btn btn-outline-primary mt-3">Rodyti</button>
+                    <a href="{{route('customers-index')}}" class="btn btn-outline-info mt-3">Reset</a>
+                </div>
+            </div>
+
+
+            <div class="col-2">
+                <div class="mb-3">
+                    <label class="form-label">Rūšiuoti</label>
+                    <select class="form-select" name="sort">
+                        {{-- <option>default</option> --}}
+                        @foreach($sortSelect as $value => $name)
+                        <option value="{{$value}}" @if($sortShow==$value) selected @endif>{{$name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+
+        </form>
+
+
+
+
         @if($errors)
         @foreach ($errors->all() as $message)
         <div class="col-6">
@@ -15,6 +59,7 @@
         </div>
         @endforeach
         @endif
+
 
         @forelse($customers as $customer)
         <div class="card" style="margin-bottom: 5px">
@@ -51,6 +96,7 @@
         @empty
         <div class="list-group-item">No types yet</div>
         @endforelse
+
 
     </div>
 </div>

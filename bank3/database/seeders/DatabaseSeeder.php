@@ -41,5 +41,12 @@ class DatabaseSeeder extends Seeder
             'personal_id' => '60908250142',
             'balance' => '90450.99',
         ]);
+        DB::table('customers')->insert([
+            'name' => 'Tadas',
+            'surname' => 'Tadaitis',
+            'account_number' => 'LT82 7300 0070 8400 8924',
+            'personal_id' => '60908120142',
+            'balance' => '872.30',
+        ]);
     }
 }
