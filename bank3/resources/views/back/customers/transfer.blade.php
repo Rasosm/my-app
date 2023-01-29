@@ -19,8 +19,7 @@
 
             <form style="padding: 0 16px" action="{{route('customers-updateTransfer', $customer)}}" method="post">
 
-                <input type="text" name="balance" class="form-control" placeholder="0.00" value="{{old('balance')}}">
-
+                <input type="text" name="balance" class="form-control" placeholder="0.00" @if(count($errors->all())>=1) value="{{old('balance')}}" @else value="" @endif>
                 <button style="margin-bottom: 10px" type="submit" class="btn btn-outline-info mt-4">Nuskaičiuoti lėšas</button>
                 @csrf
                 @method('put')

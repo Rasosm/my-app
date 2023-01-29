@@ -10,12 +10,12 @@ class Customer extends Model
     use HasFactory;
 
     const SORT = [
-        'asc_name' => 'Name A-Z',
-        'desc_name' => 'Name Z-A',
-        'asc_surname' => 'Surname A-Z',
-        'desc_surname' => 'Surname Z-A',
-        'asc_balance' => 'Balance 0-9',
-        'desc_balance' => 'Balance 9-0'
+        'asc_surname' => 'Pavardė A-Z',
+        'desc_surname' => 'Pavardė Z-A',
+        'asc_name' => 'Vardas A-Z',
+        'desc_name' => 'Vardas Z-A',
+        'asc_balance' => 'Likutis 0-9',
+        'desc_balance' => 'Likutis 9-0'
 
     ];
 

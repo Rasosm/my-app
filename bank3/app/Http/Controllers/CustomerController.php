@@ -20,26 +20,49 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        if($request->s){
-             $customers = Customer::where('name', 'like', '%'.$request->s.'%')->get();
-        }
+        $perPageShow = in_array($request->per_page, Customer::PER_PAGE) ? $request->per_page : 'visi';
+        if(!$request->s){
+        
+            
+        // $customers = Customer::orderBy('surname')->orderBy('name')->where('id', '>', 0);
+        $customers = Customer::where('id', '>', 0);
 
+        
         $customers = match($request->sort ?? '') {
-                'asc_name' => Customer::orderBy('name')->orderBy('surname'),
-                'desc_name' => Customer::orderBy('name', 'desc')->orderBy('surname', 'desc'),
-                'asc_surname' => Customer::orderBy('surname')->orderBy('name'),
-                'desc_surname' => Customer::orderBy('surname', 'desc')->orderBy('name', 'desc'),
-                'asc_balance' => Customer::orderBy('balance'),
-                'desc_balance' => Customer::orderBy('balance', 'desc'),
-                default => Customer::orderBy('surname')->orderBy('name')->where('id', '>', 0)
+                'asc_name' => $customers->orderBy('name')->orderBy('surname'),
+                'desc_name' => $customers->orderBy('name', 'desc')->orderBy('surname', 'desc'),
+                'asc_surname' => $customers->orderBy('surname')->orderBy('name'),
+                'desc_surname' => $customers->orderBy('surname', 'desc')->orderBy('name', 'desc'),
+                'asc_balance' => $customers->orderBy('balance'),
+                'desc_balance' => $customers->orderBy('balance', 'desc'),
+                default => $customers->orderBy('surname')->orderBy('name')
             };
 
-            $perPageShow = in_array($request->per_page, Customer::PER_PAGE) ? $request->per_page : 'visi';
+            
             if( $perPageShow == 'visi'){
                 $customers = $customers->get();
             }else{
                 $customers = $customers->paginate($perPageShow)->withQueryString();
             }
+                     
+        }
+        else{
+            $s = explode(' ', $request->s);
+
+            if(count($s) == 1){
+            $customers = Customer::where('name', 'like', '%'.$request->s.'%')
+            ->orWhere('surname', 'like', '%'.$request->s.'%')
+            ->get();
+
+            }
+            else{
+                $customers = Customer::where('name', 'like', '%'.$s[0].'%'.$s[1].'%')
+                ->orWhere('surname', 'like', '%'.$s[0].'%'.$s[1].'%')
+                ->orWhere('name', 'like', '%'.$s[1].'%'.$s[0].'%')
+                ->orWhere('surname', 'like', '%'.$s[1].'%'.$s[0].'%')
+                ->get();
+            }
+        }
             
 
         // $customers = Customer::all()->sortBy('surname')->sortBy('name');

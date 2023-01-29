@@ -9,8 +9,8 @@
 
         <form action="{{route('customers-index')}}" method="get">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-6">
+                <div class="row justify-content-start">
+                    <div class="col-3">
                         <div class="mb-3">
                             <label class="form-label">Paieška</label>
                             <input type="text" class="form-control" name="s" value="{{$s}}">
@@ -24,37 +24,50 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-4">
-                <div class="head-buttons">
-                    <button type="submit" class="btn btn-outline-primary mt-3">Rodyti</button>
-                    <a href="{{route('customers-index')}}" class="btn btn-outline-info mt-3">Reset</a>
-                </div>
-            </div>
+        </form>
 
 
-            <div class="col-2">
-                <div class="mb-3">
-                    <label class="form-label">Rūšiuoti</label>
-                    <select class="form-select" name="sort">
-                        {{-- <option>default</option> --}}
-                        @foreach($sortSelect as $value => $name)
-                        <option value="{{$value}}" @if($sortShow==$value) selected @endif>{{$name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+        <form action="{{route('customers-index')}}" method="get">
+            <div class="container">
+                <div class="row justify-content-end">
 
-            <div class="col-2">
-                <div class="mb-3">
-                    <label class="form-label">Rodyti</label>
-                    <select class="form-select" name="per_page">
-                        {{-- <option>default</option> --}}
-                        @foreach($perPageSelect as $value)
-                        <option value="{{$value}}" @if($perPageShow==$value) selected @endif>{{$value}}</option>
 
-                        @endforeach
-                    </select>
+
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label class="form-label">Rūšiuoti</label>
+                            <select class="form-select" name="sort">
+                                {{-- <option>default</option> --}}
+                                @foreach($sortSelect as $value => $name)
+                                <option value="{{$value}}" @if($sortShow==$value) selected @endif>{{$name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-2">
+                        <div class="mb-3">
+                            <label class="form-label">Rodyti</label>
+                            <select class="form-select" name="per_page">
+                                {{-- <option>default</option> --}}
+                                @foreach($perPageSelect as $value)
+                                <option value="{{$value}}" @if($perPageShow==$value) selected @endif>{{$value}}</option>
+
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-2 ">
+                        <div class=" head-buttons">
+                            <button type="submit" class="btn btn-outline-primary mt-3" style="margin-right: 5px">Rodyti</button>
+                            <a href="{{route('customers-index')}}" class="btn btn-outline-primary mt-3" style="color: #0dcaf0">Atnaujinti</a>
+
+
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
