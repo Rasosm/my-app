@@ -56,10 +56,16 @@ class CustomerController extends Controller
 
             }
             else{
-                $customers = Customer::where('name', 'like', '%'.$s[0].'%'.$s[1].'%')
-                ->orWhere('surname', 'like', '%'.$s[0].'%'.$s[1].'%')
-                ->orWhere('name', 'like', '%'.$s[1].'%'.$s[0].'%')
-                ->orWhere('surname', 'like', '%'.$s[1].'%'.$s[0].'%')
+                // $customers = Customer::where('name', 'like', '%'.$s[0].'%'.$s[1].'%')
+                // ->orWhere('surname', 'like', '%'.$s[0].'%'.$s[1].'%')
+                // ->orWhere('name', 'like', '%'.$s[1].'%'.$s[0].'%')
+                // ->orWhere('surname', 'like', '%'.$s[1].'%'.$s[0].'%')
+                // ->get();
+
+                $customers = Customer::where('name', 'like', '%'.$s[0].'%')
+                ->orWhere('surname', 'like', '%'.$s[1].'%')
+                ->orWhere('name', 'like', '%'.$s[1].'%')
+                ->orWhere('surname', 'like', '%'.$s[0].'%')
                 ->get();
             }
         }

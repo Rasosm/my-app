@@ -20,6 +20,6 @@ class Customer extends Model
     ];
 
     const PER_PAGE = [
-        'visi', 4, 8, 24, 48
+        'visi', 4, 8, 16, 32
     ];
 }
